@@ -24,13 +24,9 @@
         return [
             self::STATUS_PENDING,
             self::STATUS_DONE,
-            
         ];
     }
 
-    public function __constructor(){
-
-    }
     public static function Description($description) {
         return $description;
     }

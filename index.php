@@ -9,26 +9,6 @@
  * @link        https://revtech.co.za
  */
 
-/*
-    require "user.php";
-
-    $user = new user();
-
-    var_dump($user->selectProperties('mike@example.com'));
-
-    echo '-----------------------------';
-
-    $play = $user->selectProperties('mike@example.com');
-
-    foreach( $play as $playr):
-
-      if(array_key_exists('name', $playr)){
-        echo $playr->name." \n";
-      }
-
-    endforeach;
-*/
-
 /**
  * Exception which causes HTTP ERROR 404 (Not Found).
  */
