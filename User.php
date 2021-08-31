@@ -28,9 +28,7 @@
         ];
     }
 
-    public function __constructor(){
-
-    }
+    
     public static function Description($description) {
         return $description;
     }
