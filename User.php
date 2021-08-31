@@ -34,8 +34,8 @@
     }
     
 
-    public static function getName($name){
-        return $name;
+    public function getName(){
+        return $this->name;
     }
 
     public function getDescription($description){
