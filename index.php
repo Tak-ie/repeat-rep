@@ -3,7 +3,7 @@
  * Controller Class Api
  * 
  * @category    Controller
- * @repet-repo     FirstTest
+ * @package     Repeat-rep
  * @author      Mbulaheni T <techcodehive@gmail.com>
  * @license     openSource 
  * @link        https://revtech.co.za
