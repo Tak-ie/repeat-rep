@@ -39,8 +39,7 @@ final class Index{
       mb_internal_encoding('UTF-8');
       set_exception_handler([$this, 'handleException']);
       spl_autoload_register([$this, 'loadClass']);
-      
-  }
+    }
 
   /**
      * Class loader.
@@ -132,7 +131,7 @@ final class Index{
    * 
    */
   private function getScript($page) {
-    return self::$page.'.php';
+    return $page.'.php';
   }
 
   /**
@@ -146,7 +145,7 @@ final class Index{
    * 
    */
   private function getTemplate($page) {
-      return self::$page.'.phtml';
+      return $page.'.phtml';
   }
 
   /**
@@ -159,4 +158,3 @@ final class Index{
 
 $index = new Index();
 $index->run();
-
