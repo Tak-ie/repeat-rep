@@ -3,8 +3,8 @@
  * Controller Class Api
  * 
  * @category    Controller
- * @package     FirstTest
- * @author      RamakhanyaD <techcodehive@gmail.com>
+ * @repet-repo     FirstTest
+ * @author      Mbulaheni T <techcodehive@gmail.com>
  * @license     openSource 
  * @link        https://revtech.co.za
  */
@@ -12,8 +12,7 @@
 /**
  * Exception which causes HTTP ERROR 404 (Not Found).
  */
-class NotFoundException extends Exception {
-}
+
 
 /**
  * Application controller & main access point
@@ -27,6 +26,7 @@ final class Index{
   private static $CLASS = [
     'db' => 'db.php', 
     'user' => 'user.php',
+    'NotFoundException'=> 'index.php'
   ];
 
     /**
@@ -82,12 +82,7 @@ final class Index{
           $run = true;
           // data for main template
           $template = $this->getTemplate($page);
-          /*
-            $flashes = null;
-            if (Flash::hasFlashes()) {
-                $flashes = Flash::getFlashes();
-            }
-          */
+        
 
           // main template (layout)
           require self::LAYOUT_PAGE;
