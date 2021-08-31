@@ -25,8 +25,8 @@ final class Index{
   const LAYOUT_PAGE='index.phtml';
 
   private static $CLASS = [
-    'db' => 'db.php', 
-    'user' => 'user.php',
+    'Db' => 'db.php', 
+    'User' => 'user.php',
     'NotFoundException'=> 'index.php'
   ];
 
