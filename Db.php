@@ -22,7 +22,7 @@
             }
             catch(PDOException $e){
 
-                echo 'Connection Error'.$e->getMessage();
+               throw $e;
             }
 
             return $this->pdo;
