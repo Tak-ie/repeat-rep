@@ -1,4 +1,3 @@
 <?php
-$food= new User();
-$food->setName('Food lover');
-?>
+    $food= new User();
+    $food->setName('Food lover');
