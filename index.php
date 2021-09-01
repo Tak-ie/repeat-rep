@@ -3,8 +3,8 @@
  * Controller Class Api
  * 
  * @category    Controller
- * @package     FirstTest
- * @author      RamakhanyaD <techcodehive@gmail.com>
+ * @package     Repeat-rep
+ * @author      Mbulaheni T <techcodehive@gmail.com>
  * @license     openSource 
  * @link        https://revtech.co.za
  */
@@ -21,12 +21,13 @@ class NotFoundException extends Exception {
 final class Index{
 
   const DEFAULT_PAGE = 'home';
-  const PAGE_DIR = '/web/';
+  //const PAGE_DIR = '/web/';
   const LAYOUT_PAGE='index.phtml';
 
   private static $CLASS = [
-    'db' => 'db.php', 
-    'user' => 'user.php',
+    'Db' => 'db.php', 
+    'User' => 'user.php',
+    'NotFoundException'=> 'index.php'
   ];
 
     /**
@@ -38,8 +39,7 @@ final class Index{
       mb_internal_encoding('UTF-8');
       set_exception_handler([$this, 'handleException']);
       spl_autoload_register([$this, 'loadClass']);
-      
-  }
+    }
 
   /**
      * Class loader.
@@ -82,15 +82,10 @@ final class Index{
           $run = true;
           // data for main template
           $template = $this->getTemplate($page);
-          /*
-            $flashes = null;
-            if (Flash::hasFlashes()) {
-                $flashes = Flash::getFlashes();
-            }
-          */
+        
 
           // main template (layout)
-          require dirname(__DIR__).'/layout/'.self::LAYOUT_PAGE;
+          require self::LAYOUT_PAGE;
       }
       if (!$run) {
           throw new NotFoundException('Page "' . $page . '" has neither script nor template!');
@@ -136,7 +131,7 @@ final class Index{
    * 
    */
   private function getScript($page) {
-    return self::$page.'.php';
+    return $page.'.php';
   }
 
   /**
@@ -150,7 +145,7 @@ final class Index{
    * 
    */
   private function getTemplate($page) {
-      return self::$page.'.phtml';
+      return $page.'.phtml';
   }
 
   /**
@@ -163,4 +158,3 @@ final class Index{
 
 $index = new Index();
 $index->run();
-
