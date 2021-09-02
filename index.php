@@ -20,7 +20,7 @@ class NotFoundException extends Exception {
  */
 final class Index{
 
-  const DEFAULT_PAGE = 'home';
+  const DEFAULT_PAGE = 'homepage';
   const PAGE_DIR = '/web/';
   const LAYOUT_PAGE='index.phtml';
   const LAYOUT_DIR = '/layout/';
