@@ -4,7 +4,7 @@
  * 
  * @category    Controller
  * @package     Repeat-rep
- * @author      Mbulaheni T <techcodehive@gmail.com>
+ * @author      Mbulaheni T <mbulahenitg@gmail.com>
  * @license     openSource 
  * @link        https://revtech.co.za
  */

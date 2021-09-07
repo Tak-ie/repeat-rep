@@ -2,105 +2,21 @@
     <section class="d-inline-flex row" style="padding:12px;width:100%;">
         <div class="menu-tile col-md-6">
             <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
+                <div class="col-sm-5">   <?php foreach($values as $product):?>
+                    <div class="menu-photo">  
                         <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:5px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:48px;color:#ffffff;">V01</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/C2-2.jpg"></div>
+                            <p  style="width:48px;color:#ffffff;"><?php echo $user->getMemu_id();?>');?></p>
+                        </div><img  class="img-thumbnail" src="assets/img/C2-2.jpg"> <?php echo $user->getImage();?></div>
                     <div class="d-flex justify-content-center align-items-center align-content-sm-center align-content-md-center align-content-lg-center align-content-xl-center menu-price"
                         style="color:#ffffff;margin-left:5px;">
-                        <p <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R65.00</p>
+                        <p  class="text-center d-flex" style="width:146px;"> <?php echo $user->getPrice();?></p>
                     </div>
-                </div>
+                </div> 
                 <div class="menu-description col-sm-7">
-                    <h3 <?php echo  User::getTitle('title');?> style="color:rgb(255,255,255);">Curry Beef</h3>
-                    <p  <?php echo User::getDescription('description');?> class="menu-detail" style="color:#ffffff;"><em>beef sauteed with ionions, carrots, and broccoli.</em>Chunks of seasoned beef and then cooked with potatoes and &nbsp;carrots<br><br><br></p>
+                    <h3  style="color:rgb(255,255,255);"><?php echo $user->getTitle();?></h3>
+                    <p  class="menu-detail" style="color:#ffffff;"><em><?php echo $user->getDescription();?></em><br><br><br></p>
                 </div>
             </div>
-        </div>
-        <div class="menu-tile col-md-6" style="margin-bottom:6px;">
-            <div class="row">
-                <div class="col-sm-5" style="height:234px;">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:4px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="color:#ffffff;">V02</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/F-2.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R50.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?>style="color:white;">Beef &amp; Garlic sauce</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);"><em>Beef sauteed with broccoli, mushrooms, and carrots in &nbsp;spicy&nbsp;</em>Chunks of seasoned &nbsp; &nbsp;beef cooked with potatoes, carrots, corn, onion, and peas &nbsp; in a full-flavored sauce.<br><br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:4px;margin-right:5px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V03</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/B10.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R68.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3 <?php echo  User::getTitle('title');?> style="color:white;">Orange Beef</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);"><em>chunks of chicken, breaded and deep-fried with sauce containing orange peels; white meat by request.</em><br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:4px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V04</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/F-6.jpg" style="min-width:126px;height:115px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R60.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3 <?php echo  User::getTitle('title');?> style="color:white;">Beef with Eggplant&nbsp;<br></h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);">Cubed beef, eggplant, and zucchini, stewed with tomato, chopped onion and pepper, chilies, and seasoned with cumin, coriander, garlic &nbsp;and other spices.<br><br><br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:4px;margin-right:5px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V05</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/Dk-3.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R65.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3 <?php echo  User::getTitle('title');?> style="color:white;">&nbsp;Broccoli Beef&nbsp;</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);">This is a hearty and flavorful vegetable beef stew &nbsp;with brocoli, carrots, and a thickened broth. &nbsp;The condensed beef broth gives it more beef flavor than just plain water or stock<br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:43px;margin-right:5px;margin-bottom:4px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V06</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/D3.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R55.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3 <?php echo  User::getTitle('title');?> style="color:white;">Sessame Beef</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);"><em>chunks of beef, breaded and deep-fried with &nbsp;sesame seed &nbsp;and browned sauce</em><br><br></p>
-                </div>
-            </div>
-        </div>
-    </section>
+        </div> 
+        <?php endforeach; ?>
+    <section>

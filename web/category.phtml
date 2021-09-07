@@ -2,61 +2,62 @@
     <div class="photo-gallery">
         <div class="container" style="background-color:#61122f;">
             <div class="intro">
-                <h2 <?php echo User::getTitle('title');?> class="text-nowrap text-center" style="color:#d6d6d8;">Menu Category</h2>
+                <h2 class="text-nowrap text-center" style="color:#d6d6d8;">Menu Category</h2>
             </div>
             <div class="row photos">
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>  "assets/img/menun.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/menun.jpg" data-bs-hover-animate="bounce" style="width:330px;height:200px;margin-top:15px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:0px;">Steak : R88.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/menun.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/menun.jpg" data-bs-hover-animate="bounce" style="width:330px;height:200px;margin-top:15px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;">Steak : R88.00</p>
+                    <p class="text-center" style="color:#ffffff;">Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"assets/img/F-6.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/F-6.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:14px;"></a>
-                    <p  <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:0px;">Stew :R55.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/F-6.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/F-6.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:14px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;">Stew :R55.00</p>
+                    <p class="text-center" style="color:#ffffff;">Not Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?> "assets/img/Cm-1.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/Cm-1.jpg" data-bs-hover-animate="bounce" style="height:200px;padding:4px;padding-top:5px;margin-top:14px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center"
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/Cm-1.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/Cm-1.jpg" data-bs-hover-animate="bounce" style="height:200px;padding:4px;padding-top:5px;margin-top:14px;"></a>
+                    <p class="text-center"
                         style="color:#ffffff;margin-bottom:0px;">Salad : R45.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$pending;?></p>
+                    <p class="text-center" style="color:#ffffff;">Not Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"assets/img/Vg-1.jpg" data-lightbox="photos" style="background-image:url(&quot;assets/img/Vg-1.jpg&quot;);"><img class="img-thumbnail img-fluid" src="assets/img/Vg-1.jpg" data-bs-hover-animate="bounce" style="height:200px;padding:4px;padding-top:4px;margin-top:13px;"></a>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/Vg-1.jpg" data-lightbox="photos" style="background-image:url(&quot;assets/img/Vg-1.jpg&quot;);"><img class="img-thumbnail img-fluid" src="assets/img/Vg-1.jpg" data-bs-hover-animate="bounce" style="height:200px;padding:4px;padding-top:4px;margin-top:13px;"></a>
                     <p
-                    <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:0px;">&nbsp;mixed veg : R60.00</p>
-                        <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                        class="text-center" style="color:#ffffff;margin-bottom:0px;">&nbsp;mixed veg : R60.00</p>
+                        <p class="text-center" style="color:#ffffff;">Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?> "assets/img/B8.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/B8.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:14px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:0px;">Chicken breast :R60.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/B8.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/B8.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:14px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;">Chicken breast :R60.00</p>
+                    <p class="text-center" style="color:#ffffff;">Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"assets/img/C2-2.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/C2-2.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:14px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:0px;">Mutton stew &nbsp;:R65.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/C2-2.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/C2-2.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:14px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;">Mutton stew &nbsp;:R65.00</p>
+                    <p class="text-center" style="color:#ffffff;">Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"assets/img/F-12.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/F-12.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:14px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:0px;">Steamed veg : R50.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/F-12.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/F-12.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:14px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;">Steamed veg : R50.00</p>
+                    <p class="text-center" style="color:#ffffff;">Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"assets/img/B10.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/B10.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:16px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:0px;">sweet meat : R60.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/B10.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/B10.jpg" data-bs-hover-animate="bounce" style="height:200px;margin-top:16px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;">sweet meat : R60.00</p>
+                    <p class="text-center" style="color:#ffffff;">Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"assets/img/B6.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid flex-grow-1 flex-fill" src="assets/img/C19.jpg" alt="bc menu" width="200px" height="400px" data-bs-hover-animate="bounce" style="height:200px;width:330px;margin-top:14px;"></a>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/B6.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid flex-grow-1 flex-fill" src="assets/img/C19.jpg" alt="bc menu" width="200px" height="400px" data-bs-hover-animate="bounce" style="height:200px;width:330px;margin-top:14px;"></a>
                     <p
-                    <?php echo User::getTitle('title');?>class="text-center" style="color:#ffffff;margin-bottom:0px;">Chicken pepper: R59.00</p>
-                        <p class="text-center" style="color:#ffffff;"><?php echo User::$pending;?></p>
+                        class="text-center" style="color:#ffffff;margin-bottom:0px;">Chicken pepper: R59.00</p>
+                        <p class="text-center" style="color:#ffffff;">Not available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"assets/img/B13.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/B13.jpg" width="200px" height="200px" data-bs-hover-animate="bounce" style="height:199px;width:330px;margin-top:14px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center"
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/B13.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/B13.jpg" width="200px" height="200px" data-bs-hover-animate="bounce" style="height:199px;width:330px;margin-top:14px;"></a>
+                    <p class="text-center"
                         style="color:#ffffff;margin-bottom:0px;">Fried chicken : R78.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                    <p class="text-center" style="color:#ffffff;">Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"assets/img/C12.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/C12.jpg" data-bs-hover-animate="bounce" style="height:197px;margin-top:14px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:9px;">Means &amp; veg : R78.00</p>
-                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;"><?php echo User::$done;?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/C12.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/C12.jpg" data-bs-hover-animate="bounce" style="height:197px;margin-top:14px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:9px;">Means &amp; veg : R78.00</p>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;">Available</p>
                 </div>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href=<?php echo User::printMenu('menuItem');?>"menu2.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/C15.jpg" data-bs-hover-animate="bounce" style="height:198px;margin-top:14px;"></a>
-                    <p <?php echo User::getTitle('title');?> class="text-center" style="color:#ffffff;margin-bottom:0px;">Sweet chicken : R48.00</p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo User::$done;?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="menu2.jpg" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/C15.jpg" data-bs-hover-animate="bounce" style="height:198px;margin-top:14px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;">Sweet chicken : R48.00</p>
+                    <p class="text-center" style="color:#ffffff;">Available</p>
                 </div>
             </div>
         </div>
     </div>
+   
