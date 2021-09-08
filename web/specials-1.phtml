@@ -1,107 +1,26 @@
-
+ <?php 
+$user = new product(); 
+$values = '';
+?>
+    <?php foreach($values as $user):?>
     <section class="d-inline-flex row" style="padding:12px;width:100%;">
         <div class="menu-tile col-md-6">
             <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:5px;">
-                            <p  <?php echo User::getMenu_id('menu_id');?>style="width:48px;color:#ffffff;">V01</p>
-                        </div><img  img <?php echo User::getImage('image');?>class="img-thumbnail" src="assets/img/menun.jpg" style="height:122px;width:250px;"></div>
+                <div class="col-sm-5">   
+                    <div class="menu-photo">  
+                    div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:5px;">
+                            <p style="width:48px;color:#ffffff;"><?php echo $user->getname();?></p>
+                        <div><img  class="img-thumbnail" src="assets/img/C2-2.jpg"><?php echo $values->getImage();?></div>
                     <div class="d-flex justify-content-center align-items-center align-content-sm-center align-content-md-center align-content-lg-center align-content-xl-center menu-price"
                         style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="d-flex" style="width:146px;">Price : R85.00</p>
-                    </div>
-                </div>
+                        <p  class="text-center d-flex" style="width:146px;"> <?php echo $user->getPrice();?></p>
+                    </div> 
+                </div> 
                 <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:rgb(255,255,255);">Beef chops</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:#ffffff;">cryspy tenderly cooked, &nbsp;juicy beef meat piled high in a fresh bun, topped with homemade coleslaw and the Chef's special tossed with pehul spice.<br></p>
-                </div>
+                    <h3  style="color:rgb(255,255,255);"><?php echo $user->getTitle();?></h3>
+                    <p  class="menu-detail" style="color:#ffffff;"><em><?php echo $product->getDesription();?></em><br><br><br></p>
+                    <?php endforeach; ?></div>
             </div>
-        </div>
-        <div class="menu-tile col-md-6" style="margin-bottom:6px;">
-            <div class="row">
-                <div class="col-sm-5" style="height:234px;">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:4px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="color:#ffffff;width:13px;">V02</p>
-                        </div><img img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/B14.jpg" style="min-width:126px;height:122px;width:250px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="d-flex" style="width:146px;">Price : R60.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">Beef ribs</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);"><em>marinated grilled roast barbeque </em>&nbsp;beef ribs, juicy beef meat piled high in a fresh bun, topped with homemade coleslaw and the Chef's special BBQ sauce.<br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:4px;margin-right:5px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V03</p>
-                        </div><img img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/dsteak.jpg" style="min-width:126px;height:122px;width:250px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="d-flex" style="width:146px;">Price : R68.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">Flank steak</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);">Excellent steak pair with dry rub<br>ender strips of grilled meat, onion, and pepper, Topped with shredded cheddar and a Tex-Mex sauce and mushrooms, and then baked in the oven.<br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:4px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V04</p>
-                        </div><img img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/steakrt.jpg" style="min-width:126px;height:122px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="d-flex" style="width:146px;">Price: R90.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">Tenderloin steak</h3>
-                    <p  <?php echo User::getDescription('description');?>class="menu-detail" style="color:rgb(255,255,255);">Slowly` cooked, chicken meat tossed in africa spice, topped with homemade coleslaw and the Chef's special &nbsp;sauce. which &nbsp;give tender taste to the meat<br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:4px;margin-right:5px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V05</p>
-                        </div><img img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/steakrec.jpg" style="min-width:126px;height:122px;width:250px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="d-flex" style="width:146px;">Price : R65.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">Chuck-eye Steak</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);">Marinated steak great with sauces or flavoured butter to bring out tender special occasion steak to taste</p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:43px;margin-right:5px;margin-bottom:4px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V06</p>
-                        </div><img img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/B15.jpg" style="min-width:126px;height:121px;width:250px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="d-flex" style="width:146px;">&nbsp;Price : R75.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">&nbsp;BBQ Beef</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);"><em>2 spring egg rolls, 2 fried dumplings, 2 BBQ ribs, 2 beef toast chefs recommendation.</em><br><br></p>
-                </div>
-            </div>
-        </div>
-    </section>
-   
+        </div> 
+       
+    <section>
