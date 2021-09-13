@@ -1,0 +1,23 @@
+
+    <div>
+        <div class="jumbotron jumbotron-fluid" style="height:295px;background-repeat:no-repeat;background-size:cover;background-color:#35525B;margin-bottom:0px;">
+            <h1 class="text-center">Contact us</h1>
+            <p class="text-center" style="color:#ffffff;font-size:17px;"><br>Send us a message and we’ll get back to you as soon as possible.<br>You can also reach us by phone at&nbsp;<a href="tel:3476894287">015–249–8451</a>&nbsp;or email&nbsp;<a href="mailto:info@coloniaverdenyc.com">info@grapevine.com</a>. Looking
+                forward to hearing from you.<br><br><br></p>
+            <p></p>
+        </div>
+    </div>
+    <div class="intro"></div>
+    <div data-aos="zoom-out" class="register-photo" style="background-color:#B3DEE5;">
+        <div class="form-container">
+            <form method="post">
+                <div class="form-group"><?php echo isset($error['name'])?$error['name'] :''?><input class="form-control" type="text" name="Name" value="Name" required="" autofocus=""></div>
+                <div class="form-group"><?php echo isset($error['lastname'])?$error['lastname'] :''?><input class="form-control" type="text" name="Last Name" value="Last Name" required=""></div>
+                <div class="form-group"><?php echo isset($error['email'])?$error['email'] :''?><input class="form-control" type="email" name="email" required="" placeholder="Email"></div>
+                <div class="form-group"><?php echo isset($error['password'])?$error['pasword'] :''?><input class="form-control" type="password" name="password" required="" placeholder="Password"></div>
+                <div class="form-group"><?php echo isset($error['password'])?$error['pasword'] :''?><select class="form-control" required=""><option value="selector" selected="">Select category</option><option value="12">Category</option><option value="13">Press</option><option value="14">Catering</option></select></div>
+                <div class="form-group"><?php echo isset($error['comment'])?$error['comment'] :''?><textarea class="form-control" name ="comment" wrap="hard" required="" style="height:148px;">Message</textarea></div>
+                <div class="form-group"><button class="btn btn-warning btn-block btn-lg" type="submit" style="width:237px;">Submit</button></div>
+            </form>
+        </div>
+    </div>

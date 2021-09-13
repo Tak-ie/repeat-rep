@@ -1,106 +1,21 @@
-
-    <section class="d-inline-flex row" style="padding:12px;width:100%;">
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:5px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:48px;color:#ffffff;">V01</p>
-                        </div><img  <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/D6.jpg"></div>
-                    <div class="d-flex justify-content-center align-items-center align-content-sm-center align-content-md-center align-content-lg-center align-content-xl-center menu-price"
-                        style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R45.00</p>
-                    </div> 
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3 <?php echo  User::getTitle('title');?> style="color:rgb(255,255,255);">Cheese Vegitable</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:#ffffff;">Brocolli, beans, and shredded cheese served in a crispy shell with your choice of sour cream and salsa accompanied by soup  .<br><br><br></p>
-                </div>
+<section class="d-inline-flex row" style="padding:12px;width:100%;">
+<?php foreach($values as $user):?>
+<div class="menu-tile col-md-6">
+    <div class="row">
+        <div class="col-sm-5">
+            <div class="menu-photo">  
+                <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:5px;">
+                    <p  style="width:48px;color:#ffffff;"><?php echo $user->Menu_id;?></p>
+                </div><img  class="img-thumbnail" src="assets/img/<?php echo $user->Image?>"> </div>
+            <div class="d-flex justify-content-center align-items-center align-content-sm-center align-content-md-center align-content-lg-center align-content-xl-center menu-price"
+                style="color:#ffffff;margin-left:5px;">
+                <p  class="text-center d-flex" style="width:146px;"> price R<?php echo $user->Price;?></p>
             </div>
+        </div> 
+        <div class="menu-description col-sm-7">
+            <h3  style="color:rgb(255,255,255);"><?php echo $user->Title;?></h3>
+            <p  class="menu-detail" style="color:#ffffff;"><em><?php echo $user->Description;?></em><br><br><br></p>
         </div>
-        <div class="menu-tile col-md-6" style="margin-bottom:6px;">
-            <div class="row">
-                <div class="col-sm-5" style="height:234px;">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:4px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="color:#ffffff;">V02</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/Vg-1.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R55.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">Mixed Vegitables<br></h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:#ffffff;"><em>broccoli, carrots, baby corn, water chestnuts, mushrooms, and green beans sauteed in brown sauce</em><br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:4px;margin-right:5px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V03</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/VG5.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R48.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">Mushroom &amp; Broc</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);"><em>Low temperature cooked broccoli sauteed with fresh mushrooms deeped in white sauce</em><br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:4px;">
-                            <p  <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V04</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/SS1.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R50.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">mixed roll combo&nbsp;</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);"><em>sliced cucumber sauteed with onions and green peppers in sauce&nbsp;</em>Carrots, &nbsp;peppers, onion, and snap mashroom sautéed in sesame oil.&nbsp;<br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:42px;margin-bottom:4px;margin-right:5px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V05</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/NF10.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R40.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">Vegitable spaghetti</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);"><em>broccoli, snow peas, onions, and bean sprouts sauteed with rice noodles in sauce</em><br><br></p>
-                </div>
-            </div>
-        </div>
-        <div class="menu-tile col-md-6">
-            <div class="row">
-                <div class="col-sm-5">
-                    <div class="menu-photo">
-                        <div class="id" style="height:28px;width:43px;margin-right:5px;margin-bottom:4px;">
-                            <p <?php echo User::getMenu_id('menu_id');?> style="width:47px;color:#ffffff;">V06</p>
-                        </div><img <?php echo User::getImage('image');?> class="img-thumbnail" src="assets/img/F-12.jpg" style="min-width:126px;"></div>
-                    <div class="d-flex justify-content-center flex-nowrap menu-price" style="color:#ffffff;margin-left:5px;">
-                        <p  <?php echo User::getPrice('price');?> class="text-center d-flex" style="width:146px;">Price : R50.00</p>
-                    </div>
-                </div>
-                <div class="menu-description col-sm-7">
-                    <h3  <?php echo  User::getTitle('title');?> style="color:white;">String bean</h3>
-                    <p <?php echo User::getDescription('description');?> class="menu-detail" style="color:rgb(255,255,255);">Slow cooked, &nbsp;juicy green veggies boiled at a low temperature to get crisp bright veggies, topped with abit of livers &nbsp;and the Chef's special marinade sauce.&nbsp;<br></p>
-                </div>
-            </div>
-        </div>
-    </section>
+    </div>
+</div> <?php endforeach;?>
+ </section>

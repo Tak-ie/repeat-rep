@@ -1,0 +1,14 @@
+
+    <div class="article-list"></div>
+    <div class="register-photo" style="background-color:#61122f;">
+        <h2 class="text-center text-white" style="margin-bottom:26px;color:#ffffff;"><?php echo $dsp->name();?></h2>
+        <div class="form-container" style="height:490px;">
+            <div class="image-holder" style="background-image:url(&quot;assets/img/<?php echo $dsp->image();?>&quot;);"></div>
+            <form method="post">
+                <h2 class="text-center"><strong><?php echo $dsp->title();?></strong></h2>
+                <div class="form-group"><?php echo isset($error['name'])?$error['name'] :''?><input class="form-control" type="text" name="FirstName" placeholder="First Name"></div>
+                <div class="form-group"><?php echo isset($error['lastname'])?$error['lastname'] :''?><input class="form-control" type="text" name="LastName" placeholder="Last Name"></div>
+                <div class="form-group"><?php echo isset($error['email'])?$error['email'] :''?><input class="form-control" type="email" name="Email" placeholder="Email"></div>
+                <div class="form-group"><button class="btn btn-primary active btn-block" name="subscribe" value = "submit" type="submit" style="background-color:#1485ee;">Subscribe</button></div><a class="text-monospace already" href="#" style="font-size:14px;color:#282d32;">&nbsp;<?php echo $dsp->message();?>&nbsp;</a></form>
+        </div>
+    </div>

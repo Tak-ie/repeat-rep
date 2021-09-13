@@ -3,6 +3,7 @@
     class User extends Db{
 
         private $tableName = 'menu';
+        
 
         
         protected $pdo;
@@ -45,8 +46,8 @@
             return $this->title;
         }
 
-        public function getId($id){
-            return $id;
+        public function getId(){
+            return $this->id;
         }
 
         public function setName($name){
@@ -61,8 +62,8 @@
         }
 
 
-        public function getHours($hours){
-            return $hours;
+        public function getHours(){
+            return $this->hours;
         }
 
         public function printMenu()  {
@@ -102,35 +103,96 @@
             }
         }*/
         
-        function selectProperties( $where = null){
+        function selectProperties($column=null,$where = null){
 
             $columns =['Id','Title','Menu_id','Image','Price','Description'];
           
             if( $where !== null){
 
                 $values = [$where];
-                $effectChange='id'; 
-                if($this->select($this->tableName, $columns,$values,'id')){
-
-                    echo $values;
-                    
-                }else{
-                    echo 'false';
-                }
+                 
+                $result= $this->select($this->tableName, $columns,$values,$column);
+                return $result;
             }else{
 
-                if($this->select($this->tableName, $columns)){
-
-                    echo $values;
-                }else{
-                    echo 'false';
-                }
+                $result= $this->select($this->tableName, $columns);
+                return $result;
             }
+        }   
+    }
+
+//error class
+class  Subscribe{
+    private $source;
+    private $message;
+
+    public function __constructor($source,$message){
+        $this->source=$source;
+        $this->message= $message;
+
+    }
+    public function getsource(){
+        return $this->$source;
+
+    }
+    public function getMessage(){
+        return $this->message;
+
+
+    }
+}
+
+//form class
+class Subscriber{
+   
+        private $firstname;
+        private $lastname;
+        private $email;
+        private $image;
+        
+
+        public function __construct($Firstname,$lastname, $email, $image){
+
+            $this->firstname = $firstname;
+            $this->lastname = $lastname;
+            $this->email = $email;
+            $this->image = $image;
+            
         }
 
+        public function firstname(){
+            return $this->firstname;
+        }
+
+        public function lastname(){
+            return $this->lastname;
+        }
+
+        public function email(){
+            return $this->price;
+        }
+
+        public function image(){
+            return $this->image;
+        }
+
+     public function insert(){
         
+            $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`) VALUES (?,?,?)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(1,$firstname);
+            $stmt->bindParam(2,$lastname);
+            $stmt->bindParam(3,$email);
+            
+            $stmt->execute(); 
+            echo "Info has been inserted to the db";
+            $stmt->close();
+
+        }
         
-    }
+       
+    
+}
 
 
    
