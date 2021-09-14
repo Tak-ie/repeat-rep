@@ -17,9 +17,9 @@
         private $menu_id;
         private $description;
         private $price;
-        private $Title;
+        private $name;
         
-        function __construct(){
+        function __construct($name,$title,$description,$image){
             $this->pdo = $this->connect();
         } 
         
@@ -148,15 +148,15 @@ class Subscriber{
         private $firstname;
         private $lastname;
         private $email;
-        private $image;
+       
         
 
-        public function __construct($Firstname,$lastname, $email, $image){
+        public function __construct($firstname,$lastname, $email, $image){
 
             $this->firstname = $firstname;
             $this->lastname = $lastname;
             $this->email = $email;
-            $this->image = $image;
+           
             
         }
 
@@ -169,7 +169,7 @@ class Subscriber{
         }
 
         public function email(){
-            return $this->price;
+            return $this->email;
         }
 
         public function image(){

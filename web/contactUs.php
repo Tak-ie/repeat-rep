@@ -1,17 +1,17 @@
 <?php
-if(array_key_exists('subscribe',$_POST)){
-    $name = $_POST['FirstName'];
-    $lastName =$_POST['LastName'];
-    $email = $_POST['Email'];
+if(array_key_exists('submit',$_POST)){
+    $firstName = $_POST['firstName'];
+    $lastName =$_POST['lastName'];
+    $email = $_POST['email'];
     $select = $_POST['selector'];
-    $comment =$_POST['Comment'];
+    $comment =$_POST['comment'];
 
     $error=[];
-    if(!trim($name)){
-        $error['name'] = 'first name cannot be empty';
+    if(!trim($firstName)){
+        $error['firstName'] = 'first name cannot be empty';
     }
     if(!trim($lastName)){
-        $error['lastname'] = 'last name cannot be empty';
+        $error['lastName'] = 'last name cannot be empty';
     }
     if(!trim($email)){
         $error['email'] = 'email cannot be empty';
