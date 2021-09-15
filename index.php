@@ -29,7 +29,7 @@ final class Index{
     'Db' => '/model/db.php', 
     'User' => '/model/user.php',
     'NotFoundException'=> 'index.php',
-    'product'=>'special-1.php'
+    'Subscriber'=>'/model/user.php'
   ];
 
     /**

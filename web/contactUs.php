@@ -3,7 +3,7 @@ if(array_key_exists('submit',$_POST)){
     $firstName = $_POST['firstName'];
     $lastName =$_POST['lastName'];
     $email = $_POST['email'];
-    $select = $_POST['selector'];
+    $select = $_POST['select'];
     $comment =$_POST['comment'];
 
     $error=[];
