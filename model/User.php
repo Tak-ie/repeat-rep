@@ -149,6 +149,7 @@ class Subscriber extends Db{
         private $lastname;
         private $email;
        
+       
         
 
         public function __construct($firstname,$lastname, $email){
@@ -157,6 +158,7 @@ class Subscriber extends Db{
             $this->firstname = $firstname;
             $this->lastname = $lastname;
             $this->email = $email;
+           
            
             
         }
@@ -172,17 +174,16 @@ class Subscriber extends Db{
         public function email(){
             return $this->email;
         }
-
+       
        
 
      public function insert(){
         
-            $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`) VALUES (?,?,?)";
+            $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
             $stmt = $this->pdo->prepare($sql);
             $stmt->bindParam(1,$firstname);
             $stmt->bindParam(2,$lastname);
             $stmt->bindParam(3,$email);
-            
             $stmt->execute($this->firstname,$this->lastname,$this->email); 
             echo "Info has been inserted to the db";
             
@@ -192,6 +193,74 @@ class Subscriber extends Db{
        
     
 }
+
+
+
+
+class Contact extends Db{
+
+       private $firstname;
+       private $lastname;
+       private $email;
+       private $phone;
+       private $category;
+       private $message;
+            
+    
+
+       public function __construct($firstname,$lastname, $email,$phone,$category,$message){
+        $this->pdo = $this->connect();
+
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->email = $email;
+        $this->phone = $phone;
+        $this->message = $category;
+        $this->message = $message;
+       
+        
+    }
+
+            public function firstname(){
+                return $this->firstname;
+            }
+
+            public function lastname(){
+                return $this->lastname;
+            }
+
+            public function email(){
+                return $this->email;
+            }
+            public function phone(){
+                return $this->phone;
+            }
+            public function category(){
+                return $this->category;
+            }
+            public function message(){
+                return $this->message;
+            }
+
+
+          public function forward(){
+        
+            $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, 'Phone',Category,'Message') VALUES (?,?,?.?,?,?)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(1,$firstname);
+            $stmt->bindParam(2,$lastname);
+            $stmt->bindParam(3,$email);
+            $stmt->bindParam(4,$phone);
+            $stmt->bindParam(5,$category);
+            $stmt->bindParam(6,$message);
+            $stmt->execute($this->firstname,$this->lastname,$this->email,$this->phone,$this->category,$this->message); 
+            echo "Info has been inserted to the db";
+           
+          }          
+
+        }
+
+
 
 
    

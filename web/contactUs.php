@@ -3,7 +3,8 @@ if(array_key_exists('submit',$_POST)){
     $firstName = $_POST['firstName'];
     $lastName =$_POST['lastName'];
     $email = $_POST['email'];
-    $select = $_POST['select'];
+    $phone = $_POST['phone'];
+    $category = $_POST['category'];
     $comment =$_POST['comment'];
 
     $error=[];
@@ -16,13 +17,17 @@ if(array_key_exists('submit',$_POST)){
     if(!trim($email)){
         $error['email'] = 'email cannot be empty';
     }
+
+    if(!trim($phone)){
+        $error['phone'] = 'phone cannot be empty';
+    }
    
     if(!trim($select)){
          foreach( $select as $value){
             return $value;
           }
      }else{
-          $error['select'] = 'select cannot be empty';
+          $error['category'] = 'select cannot be empty';
     }
 
     if(!trim($comment)){
@@ -30,8 +35,9 @@ if(array_key_exists('submit',$_POST)){
     }
 
 if(empty($error)){
-        $user= new User();
-        $obj=$user->insert('eric','mulondo','eric@gmail',);
+        $user= new Contact('eric','mulondo','eric@gmail','0769405537','catering','memories of the year' );
+        $obj=$user->insert('firstName','lastName','email',$phone,$category,$message);
+
     }
 
 }

@@ -14,8 +14,8 @@
                 <div class="form-group"><?php echo isset($error['firstname'])?$error['firstName'] :''?><input class="form-control" type="text" name="firstName" value="firstName" autofocus=""></div>
                 <div class="form-group"><?php echo isset($error['lastName'])?$error['lastName'] :''?><input class="form-control" type="text" name="lastName" value="lastName" ></div>
                 <div class="form-group"><?php echo isset($error['email'])?$error['email'] :''?><input class="form-control" type="email" name="email"  placeholder="email"></div>
-                <div class="form-group"><?php echo isset($error['password'])?$error['pasword'] :''?><input class="form-control" type="password" name="password" placeholder="password"></div>
-                <div class="form-group"><?php echo isset($error['password'])?$error['pasword'] :''?><select class="form-control"><option value="select" selected="">Select category</option><option value="12">Category</option><option value="13">Press</option><option value="14">Catering</option></select></div>
+                <div class="form-group"><?php echo isset($error['phone'])?$error['phone'] :''?><input class="form-control" type="tel" name="phone" placeholder="phone no"></div>
+                <div class="form-group"><?php echo isset($error['category'])?$error['category'] :''?><select class="form-control"><option value="select"name = "category" selected="">Select category</option><option value="12">Category</option><option value="13">Press</option><option value="14">Catering</option></select></div>
                 <div class="form-group"><?php echo isset($error['comment'])?$error['comment'] :''?><textarea class="form-control" name ="comment" wrap="hard" style="height:148px;">Message</textarea></div>
                 <div class="form-group"><button class="btn btn-warning btn-block btn-lg" name ='submit'  type="submit" style="width:237px;">Submit</button></div>
             </form>
