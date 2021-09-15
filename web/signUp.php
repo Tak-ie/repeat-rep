@@ -22,9 +22,8 @@ if(array_key_exists('subscribe',$_POST)){
 
     if(empty($error)){
         //
-
-        $sub = new Subscriber('Rudzi','Ramuludzi','vhuthu@gmai.com');
-        $sub->insert($firstName,$lastName,$email); 
+        $sub = new Subscriber($firstName,$lastName,$email);
+        $sub->insert(); 
     }
 
 

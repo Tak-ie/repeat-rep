@@ -179,12 +179,12 @@ class Subscriber extends Db{
         
             $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`) VALUES (?,?,?)";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(1,$firstname);
-            $stmt->bindParam(2,$lastname);
-            $stmt->bindParam(3,$email);
+            //$stmt->bindParam(1,$firstname);
+            //$stmt->bindParam(2,$lastname);
+            //$stmt->bindParam(3,$email);
             
-            $stmt->execute($this->firstname,$this->lastname,$this->email); 
-            echo "Info has been inserted to the db";
+            if($stmt->execute([$this->firstname,$this->lastname,$this->email]))
+                echo "Info has been inserted to the db";
             
 
         }
