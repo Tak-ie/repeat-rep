@@ -181,11 +181,12 @@ class Subscriber extends Db{
         
             $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(1,$firstname);
-            $stmt->bindParam(2,$lastname);
-            $stmt->bindParam(3,$email);
-            $stmt->execute($this->firstname,$this->lastname,$this->email); 
-            echo "Info has been inserted to the db";
+            //$stmt->bindParam(1,$firstname);
+            //$stmt->bindParam(2,$lastname);
+            //$stmt->bindParam(3,$email);
+            
+            if($stmt->execute([$this->firstname,$this->lastname,$this->email]))
+                echo "Info has been inserted to the db";
             
 
         }
@@ -195,7 +196,7 @@ class Subscriber extends Db{
 }
 
 
-
+//contact us class
 
 class Contact extends Db{
 
@@ -232,27 +233,29 @@ class Contact extends Db{
             public function email(){
                 return $this->email;
             }
+
             public function phone(){
                 return $this->phone;
             }
             public function category(){
                 return $this->category;
             }
+
             public function message(){
                 return $this->message;
             }
 
+//insert into db
 
-          public function forward(){
-        
-            $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, 'Phone',Category,'Message') VALUES (?,?,?.?,?,?)";
+            public function  setInto(){
+            $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
             $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(1,$firstname);
+            /*$stmt->bindParam(1,$firstname);
             $stmt->bindParam(2,$lastname);
             $stmt->bindParam(3,$email);
             $stmt->bindParam(4,$phone);
             $stmt->bindParam(5,$category);
-            $stmt->bindParam(6,$message);
+            $stmt->bindParam(6,$message);*/
             $stmt->execute($this->firstname,$this->lastname,$this->email,$this->phone,$this->category,$this->message); 
             echo "Info has been inserted to the db";
            

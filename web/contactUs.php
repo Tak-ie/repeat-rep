@@ -36,7 +36,7 @@ if(array_key_exists('submit',$_POST)){
 
 if(empty($error)){
         $user= new Contact('eric','mulondo','eric@gmail','0769405537','catering','memories of the year' );
-        $obj=$user->insert('firstName','lastName','email',$phone,$category,$message);
+        $user->setInto($firstName,$lastName,$email,$phone,$category,$message);
 
     }
 
