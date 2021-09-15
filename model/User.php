@@ -122,7 +122,7 @@
     }
 
 //error class
-class  Subscribe{
+class  Subscribe extends Db{
     private $source;
     private $message;
 
@@ -143,7 +143,7 @@ class  Subscribe{
 }
 
 //form class
-class Subscriber{
+class Subscriber extends Db{
    
         private $firstname;
         private $lastname;
@@ -151,7 +151,8 @@ class Subscriber{
        
         
 
-        public function __construct($firstname,$lastname, $email, $image){
+        public function __construct($firstname,$lastname, $email){
+            $this->pdo = $this->connect();
 
             $this->firstname = $firstname;
             $this->lastname = $lastname;
@@ -172,9 +173,7 @@ class Subscriber{
             return $this->email;
         }
 
-        public function image(){
-            return $this->image;
-        }
+       
 
      public function insert(){
         
@@ -184,9 +183,9 @@ class Subscriber{
             $stmt->bindParam(2,$lastname);
             $stmt->bindParam(3,$email);
             
-            $stmt->execute(); 
+            $stmt->execute($this->firstname,$this->lastname,$this->email); 
             echo "Info has been inserted to the db";
-            $stmt->close();
+            
 
         }
         

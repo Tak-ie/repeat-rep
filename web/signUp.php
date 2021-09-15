@@ -24,7 +24,7 @@ if(array_key_exists('subscribe',$_POST)){
         //
 
         $sub = new Subscriber('Rudzi','Ramuludzi','vhuthu@gmai.com');
-        $sub->insert($this->firstName,$this->lastName,$this->email); 
+        $sub->insert($firstName,$lastName,$email); 
     }
 
 
@@ -32,8 +32,6 @@ if(array_key_exists('subscribe',$_POST)){
 
 
 
-
-//$dsp =new Display('Subscribe for our news letter and products','Sign up','register_early.jpg','We voucher your privacy, no spam!');
 
 
      
