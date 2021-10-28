@@ -18,8 +18,9 @@
         private $description;
         private $price;
         private $name;
+        private $status;
         
-        function __construct($name,$title,$description,$image){
+        function __construct(){
             $this->pdo = $this->connect();
         } 
         
@@ -49,6 +50,9 @@
         public function getId(){
             return $this->id;
         }
+        public function getStatus(){
+            return $this->status;
+        }
 
         public function setName($name){
             $this->name=$name;
@@ -76,36 +80,11 @@
     }
 
       
-/*
-        function setProperties( string $name, string $email, string $password){
 
-            $columns =['Id','Title','Menu_id','Image','Price','Description'];
-            $values = [$title, $menu_id, $image,$price,$description, $where];
-           
-            if($this->insert($this->tableName, $columns, $values)){
-
-                echo 'true';
-            }else{
-                echo 'false';
-            }
-        }
-
-        function updateProperties( string $title, string $menu_id, string $image,string $price, string $description, $where){
-
-            $columns =['Id','Title','Menu_id','Image','Price','Description'];
-            $values = [$title, $menu_id, $image,$price,$description, $where];
-            
-            if($this->update($this->tableName, $columns, $values, 'id')){
-
-                echo 'true';
-            }else{
-                echo 'false';
-            }
-        }*/
         
         function selectProperties($column=null,$where = null){
 
-            $columns =['Id','Title','Menu_id','Image','Price','Description'];
+            $columns =['Id','Title','Menu_id','Image','Price','Description','Status'];
           
             if( $where !== null){
 
@@ -149,18 +128,9 @@ class Subscriber extends Db{
         private $lastname;
         private $email;
        
-       
-        
-
-        public function __construct($firstname,$lastname, $email){
+        public function __construct(){
             $this->pdo = $this->connect();
-
-            $this->firstname = $firstname;
-            $this->lastname = $lastname;
-            $this->email = $email;
-           
-           
-            
+    
         }
 
         public function firstname(){
@@ -177,7 +147,7 @@ class Subscriber extends Db{
        
        
 
-     public function insert(){
+     public function inserto(){
         
             $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
             $stmt = $this->pdo->prepare($sql);
@@ -209,16 +179,8 @@ class Contact extends Db{
             
     
 
-       public function __construct($firstname,$lastname, $email,$phone,$category,$message){
+       public function __construct(){
         $this->pdo = $this->connect();
-
-        $this->firstname = $firstname;
-        $this->lastname = $lastname;
-        $this->email = $email;
-        $this->phone = $phone;
-        $this->message = $category;
-        $this->message = $message;
-       
         
     }
 
@@ -247,16 +209,16 @@ class Contact extends Db{
 
 //insert into db
 
-            public function  setInto(){
+            public function  setInto($firstname,$lastname, $email,$phone,$category,$message){
             $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
             $stmt = $this->pdo->prepare($sql);
-            /*$stmt->bindParam(1,$firstname);
+            $stmt->bindParam(1,$firstname);
             $stmt->bindParam(2,$lastname);
             $stmt->bindParam(3,$email);
             $stmt->bindParam(4,$phone);
             $stmt->bindParam(5,$category);
-            $stmt->bindParam(6,$message);*/
-            $stmt->execute($this->firstname,$this->lastname,$this->email,$this->phone,$this->category,$this->message); 
+            $stmt->bindParam(6,$message);
+            $stmt->execute([$this->firstname,$this->lastname,$this->email,$this->phone,$this->category,$this->message]); 
             echo "Info has been inserted to the db";
            
           }          

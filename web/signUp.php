@@ -23,7 +23,7 @@ if(array_key_exists('subscribe',$_POST)){
     if(empty($error)){
         //
         $sub = new Subscriber($firstName,$lastName,$email);
-        $sub->insert(); 
+        $sub->inserto(); 
     }
 
 

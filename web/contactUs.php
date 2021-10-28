@@ -22,12 +22,12 @@ if(array_key_exists('submit',$_POST)){
         $error['phone'] = 'phone cannot be empty';
     }
    
-    if(!trim($select)){
-         foreach( $select as $value){
+    if(!trim($category)){
+         foreach( $category as $value){
             return $value;
           }
      }else{
-          $error['category'] = 'select cannot be empty';
+          $error['category'] = 'category cannot be empty';
     }
 
     if(!trim($comment)){
@@ -35,8 +35,8 @@ if(array_key_exists('submit',$_POST)){
     }
 
 if(empty($error)){
-        $user= new Contact('eric','mulondo','eric@gmail','0769405537','catering','memories of the year' );
-        $user->setInto($firstName,$lastName,$email,$phone,$category,$message);
+        $user= new Contact();
+        $user->setInto('eric','mulondo','eric@gmail','0769405537','catering','memories of the year');
 
     }
 

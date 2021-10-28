@@ -27,6 +27,54 @@
 
             return $this->pdo;
         }
+
+        
+  protected function select(string $tableName, $columns, $values = null, $where = null)
+  {
+          
+          $string = implode(',' , $columns);
+
+          $sql = "
+              SELECT $string FROM $tableName 
+          ";
+
+      if ($where !== null) {
+              $sql = $sql ." WHERE $where = ?";
+      }
+
+          $stmt = $this->pdo->prepare($sql);
+
+          if($values !== null){
+
+              $stmt->execute($values);
+
+              $num = $stmt->rowCount();
+  
+              if( $num > 0){
+          
+                  $row = $stmt->fetchAll();
+
+                  return $row;
+              }
+
+              return false;
+
+          }else{
+              
+              $stmt->execute();
+
+               $num = $stmt->rowCount();
+  
+              if( $num > 0){
+          
+                  $row = $stmt->fetchAll();
+          
+                  return $row;
+              }
+
+             
+          }
+      }
        
   }
 ?>
