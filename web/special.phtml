@@ -5,17 +5,17 @@
         <div class="col-sm-5">
             <div class="menu-photo">  
                 <div class="id" style="height:28px;width:42px;margin-bottom:5px;margin-right:5px;">
-                    <p  style="width:48px;color:#ffffff;"><?php echo $user->Menu_id;?></p>
-                </div><img  class="img-thumbnail" src="assets/img/<?php echo $user->Image?>"> </div>
+                    <p  style="width:48px;color:#ffffff;"><?php echo $user->menu_id;?></p>
+                </div><img  class="img-thumbnail" src="assets/img/<?php echo $user->image?>"> </div>
             <div class="d-flex justify-content-center align-items-center align-content-sm-center align-content-md-center align-content-lg-center align-content-xl-center menu-price"
                 style="color:#ffffff;margin-left:5px;">
-                <p  class="text-center d-flex" style="width:146px;"> <?php echo $user->Price;?>&nbsp;&nbsp<button class="btn btn-dark btn-sm" name = "add" type="button">Order</button></p>
+                <p  class="text-center d-flex" style="width:146px;"> <?php echo $user->price;?>&nbsp;&nbsp<button class="btn btn-dark btn-sm" name = "add to cart" type="button"><a href="food?id=<?php echo $user->id?>">Order</button</a></p>
             </div>
         </div> 
         <div class="menu-description col-sm-7">
-            <h3  style="color:rgb(255,255,255);"><?php echo $user->Title;?></h3>
-            <p  class="menu-detail" style="color:#ffffff;"><em><?php echo $user->Description;?></em></p>
-            <p style="color:#ffffff;"><?php echo $user->Status;?></p>
+            <h3  style="color:rgb(255,255,255);"><?php echo $user->title;?></h3>
+            <p  class="menu-detail" style="color:#ffffff;"><em><?php echo $user->description;?></em></p>
+            <p style="color:#ffffff;"><?php echo $user->status;?></p>
         </div>
     </div>
 </div> <?php endforeach;?>

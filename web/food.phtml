@@ -1,3 +1,35 @@
-<?php
-    echo $food->getName();
-?>
+
+    <section>
+        <div class="container">
+            <h1 class="text-center" style="color:#f9ddd6;">CartItems</h1>
+            <div class="table-responsive" style="padding:20px;padding-right:20px;">
+                <table class="table">
+                    <thead style="padding:21px;padding-top:0px;padding-right:25px;padding-bottom:0px;padding-left:0px;">
+                        <tr>
+                            <th style="color:#f9ddd6;">Id</th>
+                            <th style="color:#f9ddd6;">Title</th>
+                            <th style="color:#f9ddd6;">Price</th>
+                            <th style="color:#f9ddd6;">Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td style="color:#f9ddd6;"><?php echo $cart->id?></td>
+                            <td style="color:#f9ddd6;"><?php echo $cart->title?></td>
+                            <td style="color:#f9ddd6;">60.00</td>
+                            <td style="color:#f9ddd6;">2</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#f9ddd6;">2</td>
+                            <td style="color:#f9ddd6;">steak</td>
+                            <td style="color:#f9ddd6;">65</td>
+                            <td style="color:#f9ddd6;">1</td>
+                        </tr>
+                        <tr>
+                            <td style="color:#f9ddd6;">Total : 0</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </section>

@@ -1,4 +1,5 @@
 <?php
+session_start();
 /**
  * Controller Class Api
  * 
@@ -29,7 +30,10 @@ final class Index{
     'Db' => '/model/db.php', 
     'User' => '/model/user.php',
     'NotFoundException'=> 'index.php',
-    'Subscriber'=>'/model/user.php'
+    'Subscriber'=>'/model/user.php',
+    'Cart'=>'/model/user.php',
+    'CartItem'=>'/model/user.php'
+
   ];
 
     /**
@@ -159,3 +163,4 @@ final class Index{
 
 $index = new Index();
 $index->run();
+

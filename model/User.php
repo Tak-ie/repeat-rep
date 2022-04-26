@@ -12,7 +12,7 @@
         private $title;
         private $destination;
         private $image;
-        private $hours;
+        private $id;
         private $category;
         private $menu_id;
         private $description;
@@ -22,6 +22,7 @@
         
         function __construct(){
             $this->pdo = $this->connect();
+           
         } 
         
         public  function Description() {
@@ -66,8 +67,8 @@
         }
 
 
-        public function getHours(){
-            return $this->hours;
+        public function setId($id){
+             $this->id=$id;
         }
 
         public function printMenu()  {
@@ -84,7 +85,7 @@
         
         function selectProperties($column=null,$where = null){
 
-            $columns =['Id','Title','Menu_id','Image','Price','Description','Status'];
+            $columns =['id','title','menu_id','image','price','description','status'];
           
             if( $where !== null){
 
@@ -97,8 +98,109 @@
                 $result= $this->select($this->tableName, $columns);
                 return $result;
             }
-        }   
+        }  
+       
     }
+
+
+
+    class Cart extends Db
+    {
+        private $tableName = 'cart';
+    
+        private $column = ['id','title','price','quantity'];
+
+        
+        public function getId(){
+            return $id;
+        }
+
+
+        public function setId($id){
+              $this->id = $id;
+        }
+    
+        public function getTitle(){
+            return $title;
+        }
+
+
+        public function setTitle($title){
+              $this->title = $title;
+        }
+        
+        public function getPrice(){
+            return $price;
+        }
+
+
+        public function setPrice($price){
+              $this->price = $price;
+        }
+        
+        public function getQuantity(){
+            return $quantity;
+        }
+
+        public function setQuantity($quantity){
+              $this->quantity = $quantity;
+        }
+        function __construct(){
+    
+            $this->pdo = $this->connect();
+        }
+    
+        
+        
+            public function find(){
+        
+                $sql = "SELECT id FROM $this->tableName";
+                
+                $stmt = $this->pdo->prepare($sql);
+        
+                $stmt->execute();
+                $row = $stmt->rowCount();
+        
+                return $row++;
+            }
+        
+            public function insertInto( int $id){
+        
+                $sql = "INSERT INTO $this->tableName(id) Values(?)";
+                      $stmt = $this->pdo->prepare($sql);
+                       $stmt->execute([$id]); 
+                      return true;
+                  }
+            
+        
+
+
+            public function update(array $product, int $id){
+        
+                $sql = " UPDATE $this->tableName SET product = ? WHERE id = ?";
+                $stmt = $this->pdo->prepare($sql);
+                $stmt->execute([$product, $id]);
+                return true;
+               
+            }
+        
+          
+            public function fetch(int $id,$price){
+        
+                $sql = "SELECT id,price FROM $this->tableName WHERE id = ?";
+                
+                $stmt = $this->pdo->prepare($sql);
+        
+               
+                $stmt->execute([$id,$price]);
+                
+                $row = $stmt->fetchAll();
+        
+                return $row;
+            }
+        }
+
+
 
 //error class
 class  Subscribe extends Db{
@@ -228,7 +330,27 @@ class Contact extends Db{
 
 
 
-   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
