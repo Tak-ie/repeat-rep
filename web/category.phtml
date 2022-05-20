@@ -9,9 +9,9 @@
             
            <div class="row photos">
            <?php foreach($values as $user): ?>
-                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/<?php echo $user->Image?>" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/<?php echo $user->Image?>" data-bs-hover-animate="bounce" style="width:330px;height:200px;margin-top:15px;"></a>
-                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;"><?php echo $user->Price;?>&nbsp;<button class="btn btn-dark btn-sm" name = "add to cart" type="button"><a href="food?id = <?php echo $user->id?>">Order</button></a></p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo $user->Title?></p>
+                <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/<?php echo $user->image?>" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/<?php echo $user->image?>" data-bs-hover-animate="bounce" style="width:330px;height:200px;margin-top:15px;"></a>
+                    <p class="text-center" style="color:#ffffff;margin-bottom:0px;"><?php echo $user->price;?>&nbsp;<button class="btn btn-dark btn-sm" name = "add to cart" type="button"><a href="food?id = <?php echo $user->id?>">Order</button></a></p>
+                    <p class="text-center" style="color:#ffffff;"><?php echo $user->title?></p>
                 </div>
                 
                 <?php  endforeach; ?>

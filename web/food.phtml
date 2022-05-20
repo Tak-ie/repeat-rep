@@ -1,8 +1,9 @@
 
-    <section>
+<section>
         <div class="container">
             <h1 class="text-center" style="color:#f9ddd6;">CartItems</h1>
             <div class="table-responsive" style="padding:20px;padding-right:20px;">
+            <form action ='' method = 'POST'>
                 <table class="table">
                     <thead style="padding:21px;padding-top:0px;padding-right:25px;padding-bottom:0px;padding-left:0px;">
                         <tr>
@@ -10,26 +11,38 @@
                             <th style="color:#f9ddd6;">Title</th>
                             <th style="color:#f9ddd6;">Price</th>
                             <th style="color:#f9ddd6;">Quantity</th>
+                            <th style="color:#f9ddd6;">totalPrice</th>
                         </tr>
                     </thead>
+                    <?php foreach($products as $item):?>
                     <tbody>
+                       
                         <tr>
-                            <td style="color:#f9ddd6;"><?php echo $cart->id?></td>
-                            <td style="color:#f9ddd6;"><?php echo $cart->title?></td>
-                            <td style="color:#f9ddd6;">60.00</td>
-                            <td style="color:#f9ddd6;">2</td>
+                            
+                            
+                            <td style="color:#f9ddd6;"><?php echo $item->id;?></td>
+                            <td style="color:#f9ddd6;"><?php echo $item->title;?></td>
+                            <td style="color:#f9ddd6;"><?php echo $item->price;?></td>
+                            
+                            <td style="color:#f9ddd6;" >
+                          
+                            <input type = "text" name="quant[]" value = "1" size = "7"  /> 
+                            <input type="submit" name="update" value="update"/>
+                        </td>
+                        <td style="color:#f9ddd6;"><?php echo $item->price;?></td>
                         </tr>
+                        
+                        <?php endforeach;?>
+                        
                         <tr>
-                            <td style="color:#f9ddd6;">2</td>
-                            <td style="color:#f9ddd6;">steak</td>
-                            <td style="color:#f9ddd6;">65</td>
-                            <td style="color:#f9ddd6;">1</td>
+                        <td style="color:#f9ddd6;">Subtotal: </td><br/><br/>
+                        <td style="color:#f9ddd6;"><input type="submit" name="submit" value="Confirm Order" class="btn btn-primary"/></td>
                         </tr>
-                        <tr>
-                            <td style="color:#f9ddd6;">Total : 0</td>
-                        </tr>
+                    
                     </tbody>
-                </table>
+                   
+                    </table>
+               </form>
             </div>
         </div>
     </section>

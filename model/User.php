@@ -104,101 +104,144 @@
 
 
 
-    class Cart extends Db
-    {
-        private $tableName = 'cart';
+   
+class Cart extends Db {
+
+    private $id;
+    private $title;
+    private $price;
+    private $quantity;
+    private $tableName ='cart';
     
-        private $column = ['id','title','price','quantity'];
-
-        
-        public function getId(){
-            return $id;
-        }
-
-
-        public function setId($id){
-              $this->id = $id;
-        }
+    public function __construct(){
+        $this->pdo =$this->connect();
+    }
     
-        public function getTitle(){
-            return $title;
-        }
-
-
-        public function setTitle($title){
-              $this->title = $title;
-        }
-        
-        public function getPrice(){
-            return $price;
-        }
-
-
-        public function setPrice($price){
-              $this->price = $price;
-        }
-        
-        public function getQuantity(){
-            return $quantity;
-        }
-
-        public function setQuantity($quantity){
-              $this->quantity = $quantity;
-        }
-        function __construct(){
+    public function getId(){
+        return $this->id;
+    }
     
-            $this->pdo = $this->connect();
-        }
+    public function setId($id){
+        $this->$id;
+    }
     
-        
-        
-            public function find(){
-        
-                $sql = "SELECT id FROM $this->tableName";
-                
-                $stmt = $this->pdo->prepare($sql);
-        
-                $stmt->execute();
-                $row = $stmt->rowCount();
-        
-                return $row++;
-            }
-        
-            public function insertInto( int $id){
-        
-                $sql = "INSERT INTO $this->tableName(id) Values(?)";
-                      $stmt = $this->pdo->prepare($sql);
-                       $stmt->execute([$id]); 
-                      return true;
-                  }
-            
-        
-
-
-            public function update(array $product, int $id){
-        
-                $sql = " UPDATE $this->tableName SET product = ? WHERE id = ?";
-                $stmt = $this->pdo->prepare($sql);
-                $stmt->execute([$product, $id]);
-                return true;
-               
-            }
-        
+    public function getTitle(){
+        return $this->title;
+    }
+    
+    public function setTitle($id){
+        $this->$title = $title;
+    }
+    
+    public function getPrice(){
+        return $this->price;
+    }
+    
+    public function setPrice($price){
+        $this->price = $price;
+    }
+    
+    
+    public function getQuantity(){
+        return $this->quantity;
+    }
+    
+    public function setQuantity($quantity){
+        $this->quantity = $quantity;
+    }
+    
+   
+    //retrieve items inside the cart
+    public function retrieve(){
+    $wher = implode(',', $_SESSION['cart']);
+    $sql = "SELECT  id, price,title FROM $this->tableName WHERE id IN  ($wher) ";
           
-            public function fetch(int $id,$price){
+    $this->pdo = $this->connect();  
+    $stmt = $this->pdo->prepare($sql);
+    //$stmt->bindParam(1,$age);
+    
+    $stmt->execute();
+    $row=$stmt->rowCount(); 
+    if ($row > 0){
+         while($row = $stmt->fetchAll() ){
+                         
+            
+          return $row;
+             
+       }
+    }
+    
+    
+    }
+    
+    //insert items to cart db
+    public function getDetail(){
+    $details = $this->retrieve() ;
+    //var_dump($details);
+    foreach($details as $task){
+        $sql = "INSERT INTO $this->tableName(id,title,price) values(?,?,?)";
+        $stmt=$this->pdo->prepare($sql);
+        if($stmt->execute([$task->id,$task->title,$task->price])){
+            echo'sucessful';
+        }else{
+            echo 'not processed';
+        }
+        //var_dump($details);
+    }
+         // return $details;
         
-                $sql = "SELECT id,price FROM $this->tableName WHERE id = ?";
-                
-                $stmt = $this->pdo->prepare($sql);
+    }
+    
+    //update item quantity
+    public function update(){
+        $ht = $_SESSION['qty'];
+        //var_dump($quantity);
+        var_dump($ht);
+        $sql = "UPDATE $this->tableName SET quantity = $ht WHERE id = $this->id ";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute();
+            echo 'data updated to db';
         
-               
-                $stmt->execute([$id,$price]);
-                
-                $row = $stmt->fetchAll();
-        
-                return $row;
+    }
+    
+    
+    //get total items inthe cart
+    public function getTotal(){
+        $num = 0;
+        if(isset($_SESSION['cart'])){
+            foreach($_SESSION['cart'] as $item){
+                $num = $num + $item;
             }
         }
+           var_dump($num);
+    return $num;
+    }
+    
+         
+    
+            
+    
+    
+/*
+    public function get_price() 
+        {
+            $price = $this->retrieve();
+           
+            foreach ($price as $product)
+            {
+                if ($product -> id == $this->id)
+                {
+                    var_dump($product -> price);
+                    return $product -> price;
+                }
+                    
+            }	
+        }*/
+    
+    
+    
+    
+    }
 
 
 
