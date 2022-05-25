@@ -39,7 +39,7 @@
           ";
 
       if ($where !== null) {
-              $sql = $sql ." WHERE $where = ?";
+            $sql = $sql ." WHERE $where = ?";
       }
 
           $stmt = $this->pdo->prepare($sql);
@@ -48,21 +48,10 @@
 
               $stmt->execute($values);
 
-              $num = $stmt->rowCount();
-  
-              if( $num > 0){
-          
-                  $row = $stmt->fetchAll();
-
-                  return $row;
-              }
-
-              return false;
-
-          }else{
-              
+            }else{
+             
               $stmt->execute();
-
+            }
                $num = $stmt->rowCount();
   
               if( $num > 0){
@@ -71,10 +60,7 @@
           
                   return $row;
               }
-
-             
-          }
-      }
-       
-  }
+        return false;
+    }       
+}
 ?>

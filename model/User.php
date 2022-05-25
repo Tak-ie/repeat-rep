@@ -163,10 +163,10 @@ class Cart extends Db {
     $stmt->execute();
     $row=$stmt->rowCount(); 
     if ($row > 0){
-         while($row = $stmt->fetchAll() ){
-                         
-            
-          return $row;
+        
+        while($row = $stmt->fetchAll() ){
+                             
+        return $row;
              
        }
     }

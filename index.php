@@ -1,5 +1,5 @@
 <?php
-session_start();
+//session_start();
 /**
  * Controller Class Api
  * 
@@ -164,3 +164,4 @@ final class Index{
 $index = new Index();
 $index->run();
 
+//phpinfo();
