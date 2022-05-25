@@ -31,8 +31,8 @@ final class Index{
     'NotFoundException'=> 'index.php',
     'Subscriber'=>'/model/user.php',
     'Cart'=>'/model/user.php',
-    'CartItem'=>'/model/user.php'
-
+    'CartItem'=>'/model/user.php',
+    'Contact' => '/model/user.php'
   ];
 
     /**
@@ -53,7 +53,7 @@ final class Index{
   public function loadClass($name) {
 
     if (!array_key_exists($name, self::$CLASS)) {
-        die('Class "' . $name . '" not found.');
+      throw new NotFoundException('Class "' . $name . '" not found.');
     }
 
     require_once __DIR__.self::$CLASS[$name];
@@ -93,7 +93,7 @@ final class Index{
           require __DIR__.self::LAYOUT_DIR.self::LAYOUT_PAGE;
       }
       if (!$run) {
-          throw new NotFoundException('Page "' . $page . '" has neither script nor template!');
+        throw new NotFoundException('Page "' . $page . '" has neither script nor template!');
       }
   }
 
@@ -163,5 +163,3 @@ final class Index{
 
 $index = new Index();
 $index->run();
-
-//phpinfo();

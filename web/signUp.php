@@ -6,7 +6,6 @@ if(array_key_exists('subscribe',$_POST)){
     $lastName =$_POST['lastName'];
     $email = $_POST['email'];
     
-
     $error=[];
     if(!trim($firstName)){
         $error['firstName'] = 'first name cannot be empty';
@@ -18,15 +17,11 @@ if(array_key_exists('subscribe',$_POST)){
         $error['email'] = 'email cannot be empty';
     }
 
-    
-
     if(empty($error)){
         //
-        $sub = new Subscriber($firstName,$lastName,$email);
-        $sub->inserto(); 
+        $sub = new Subscriber();
+        $sub->inserto($firstName,$lastName,$email); 
     }
-
-
 }
 
 

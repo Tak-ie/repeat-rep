@@ -269,15 +269,15 @@ class Subscriber extends Db{
         return $this->email;
     }
        
-    public function inserto(){
+    public function inserto($firstName,$lastName,$email){
     
-        $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
+        $sql ="INSERT INTO customer(`Firstname`,`Lastname`,`Email`) VALUES (?,?,?)";
         $stmt = $this->pdo->prepare($sql);
-        //$stmt->bindParam(1,$firstname);
-        //$stmt->bindParam(2,$lastname);
-        //$stmt->bindParam(3,$email);
+        $stmt->bindParam(1,$firstName);
+        $stmt->bindParam(2,$lastName);
+        $stmt->bindParam(3,$email);
                 
-        if($stmt->execute([$this->firstname,$this->lastname,$this->email])){
+        if($stmt->execute()){
             return "Inserted";
         }
     }
@@ -297,6 +297,7 @@ class Contact extends Db{
 
     public function __construct(){
         $this->pdo = $this->connect(); 
+        
     }
 
     public function firstname(){
@@ -325,15 +326,19 @@ class Contact extends Db{
 
     //insert into db
     public function  setInto($firstname,$lastname, $email,$phone,$category,$message){
-        $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
+        $sql ="INSERT INTO contact_us (`Firstname`, `Lastname`,  `Email`,`Phone`, `Category`,  `Message`) VALUES (?,?,?,?,?,?)";
         $stmt = $this->pdo->prepare($sql);
-            //$stmt->bindParam(1,$firstname);
-            //$stmt->bindParam(2,$lastname);
-            //$stmt->bindParam(3,$email);
-           // $stmt->bindParam(4,$phone);
-           // $stmt->bindParam(5,$category);
-           // $stmt->bindParam(6,$message);
-            $stmt->execute([$this->firstname,$this->lastname,$this->email,$this->phone,$this->category,$this->message]); 
+
+        $stmt->bindParam(1,$firstname);
+        $stmt->bindParam(2,$lastname);
+        $stmt->bindParam(3,$email);
+        $stmt->bindParam(4,$phone);
+        $stmt->bindParam(5,$category);
+        $stmt->bindParam(6,$message);
+
+        if($stmt->execute()){
+            return "Inserted";
+        }
     }     
 
 }
