@@ -1,6 +1,6 @@
 <?php
 
-    class User extends Db{
+    class Products extends Db{
 
         private $tableName = 'menu';
         
@@ -78,7 +78,7 @@
         
         }
 
-        
+
       
         function selectProperties($column=null,$where = null){
 
@@ -150,42 +150,41 @@ class Cart extends Db {
    
     //retrieve items inside the cart
     public function retrieve(){
-    $wher = implode(',', $_SESSION['cart']);
-    $sql = "SELECT  id, price,title FROM $this->tableName WHERE id IN  ($wher) ";
-          
-    $this->pdo = $this->connect();  
-    $stmt = $this->pdo->prepare($sql);
-    //$stmt->bindParam(1,$age);
-    
-    $stmt->execute();
-    $row=$stmt->rowCount(); 
-    if ($row > 0){
+        $wher = implode(',', $_SESSION['cart']);
+        $sql = "SELECT  id, price,title FROM $this->tableName WHERE id IN  ($wher) ";
+            
+        $this->pdo = $this->connect();  
+        $stmt = $this->pdo->prepare($sql);
+        //$stmt->bindParam(1,$age);
         
-        while($row = $stmt->fetchAll() ){
-                             
-        return $row;
-             
-       }
-    }
-    
-    
+        $stmt->execute();
+        $row=$stmt->rowCount(); 
+        if ($row > 0){
+            
+            $row = $stmt->fetchAll();
+                                
+                return $row;
+        }
+        
+        return false;
     }
     
     //insert items to cart db
     public function getDetail(){
-    $details = $this->retrieve() ;
-    //var_dump($details);
-    foreach($details as $task){
-        $sql = "INSERT INTO $this->tableName(id,title,price) values(?,?,?)";
-        $stmt=$this->pdo->prepare($sql);
-        if($stmt->execute([$task->id,$task->title,$task->price])){
-            echo'sucessful';
-        }else{
-            echo 'not processed';
-        }
+        $details = $this->retrieve() ;
         //var_dump($details);
-    }
-         // return $details;
+        foreach($details as $task){
+            $sql = "INSERT INTO $this->tableName(id,title,price) values(?,?,?)";
+            $stmt=$this->pdo->prepare($sql);
+            if($stmt->execute([$task->id,$task->title,$task->price])){
+                echo'sucessful';
+            }else{
+                echo 'not processed';
+            }
+            //var_dump($details);
+        }
+            
+        // return $details;
         
     }
     
@@ -201,7 +200,6 @@ class Cart extends Db {
         
     }
     
-    
     //get total items inthe cart
     public function getTotal(){
         $num = 0;
@@ -210,16 +208,10 @@ class Cart extends Db {
                 $num = $num + $item;
             }
         }
-           var_dump($num);
-    return $num;
+        return $num;
     }
     
-         
-    
-            
-    
-    
-/*
+    /*
     public function get_price() 
         {
             $price = $this->retrieve();
@@ -235,137 +227,116 @@ class Cart extends Db {
             }	
         }*/
     
-    
-    
-    
-    }
-
-
+}
 
 //error class
-class  Subscribe extends Db{
+class  Subscribe{
     private $source;
     private $message;
 
     public function __constructor($source,$message){
         $this->source=$source;
         $this->message= $message;
-
     }
     public function getsource(){
         return $this->$source;
-
     }
     public function getMessage(){
         return $this->message;
-
-
     }
 }
 
 //form class
 class Subscriber extends Db{
    
-        private $firstname;
-        private $lastname;
-        private $email;
+    private $firstname;
+    private $lastname;
+    private $email;
        
-        public function __construct(){
-            $this->pdo = $this->connect();
+    public function __construct(){
+        $this->pdo = $this->connect();
+    }
+
+    public function firstname(){
+         return $this->firstname;
+    }
+
+    public function lastname(){
+        return $this->lastname;
+    }
+
+    public function email(){
+        return $this->email;
+    }
+       
+    public function inserto(){
     
+        $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
+        $stmt = $this->pdo->prepare($sql);
+        //$stmt->bindParam(1,$firstname);
+        //$stmt->bindParam(2,$lastname);
+        //$stmt->bindParam(3,$email);
+                
+        if($stmt->execute([$this->firstname,$this->lastname,$this->email])){
+            return "Inserted";
         }
+    }
+}
 
-        public function firstname(){
-            return $this->firstname;
-        }
+//contact us class
+class Contact extends Db{
 
-        public function lastname(){
-            return $this->lastname;
-        }
+    private $firstname;
+    private $lastname;
+    private $email;
+    private $phone;
+    private $category;
+    private $message;
+            
+    
 
-        public function email(){
-            return $this->email;
-        }
-       
-       
+    public function __construct(){
+        $this->pdo = $this->connect(); 
+    }
 
-     public function inserto(){
-        
-            $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
-            $stmt = $this->pdo->prepare($sql);
+    public function firstname(){
+        return $this->firstname;
+    }
+
+    public function lastname(){
+        return $this->lastname;
+    }
+
+    public function email(){
+        return $this->email;
+    }
+
+    public function phone(){
+        return $this->phone;
+    }
+
+    public function category(){
+        return $this->category;
+    }
+
+    public function message(){
+        return $this->message;
+    }
+
+    //insert into db
+    public function  setInto($firstname,$lastname, $email,$phone,$category,$message){
+        $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
+        $stmt = $this->pdo->prepare($sql);
             //$stmt->bindParam(1,$firstname);
             //$stmt->bindParam(2,$lastname);
             //$stmt->bindParam(3,$email);
-            
-            if($stmt->execute([$this->firstname,$this->lastname,$this->email]))
-                echo "Info has been inserted to the db";
-            
-
-        }
-        
-       
-    
-}
-
-
-//contact us class
-
-class Contact extends Db{
-
-       private $firstname;
-       private $lastname;
-       private $email;
-       private $phone;
-       private $category;
-       private $message;
-            
-    
-
-       public function __construct(){
-        $this->pdo = $this->connect();
-        
-    }
-
-            public function firstname(){
-                return $this->firstname;
-            }
-
-            public function lastname(){
-                return $this->lastname;
-            }
-
-            public function email(){
-                return $this->email;
-            }
-
-            public function phone(){
-                return $this->phone;
-            }
-            public function category(){
-                return $this->category;
-            }
-
-            public function message(){
-                return $this->message;
-            }
-
-//insert into db
-
-            public function  setInto($firstname,$lastname, $email,$phone,$category,$message){
-            $sql ="INSERT INTO customer (`Firstname`, `Lastname`,  `Email`, ) VALUES (?,?,?)";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->bindParam(1,$firstname);
-            $stmt->bindParam(2,$lastname);
-            $stmt->bindParam(3,$email);
-            $stmt->bindParam(4,$phone);
-            $stmt->bindParam(5,$category);
-            $stmt->bindParam(6,$message);
+           // $stmt->bindParam(4,$phone);
+           // $stmt->bindParam(5,$category);
+           // $stmt->bindParam(6,$message);
             $stmt->execute([$this->firstname,$this->lastname,$this->email,$this->phone,$this->category,$this->message]); 
-            echo "Info has been inserted to the db";
-           
-          }          
+    }     
 
-        }
+}
 
 
 

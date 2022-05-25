@@ -1,3 +1,3 @@
 <?php
-$user =new User();
-$values = $user->selectProperties();
+$Products =new Products();
+$values = $Products->selectProperties();

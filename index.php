@@ -1,5 +1,4 @@
 <?php
-//session_start();
 /**
  * Controller Class Api
  * 
@@ -45,6 +44,7 @@ final class Index{
       mb_internal_encoding('UTF-8');
       set_exception_handler([$this, 'handleException']);
       spl_autoload_register([$this, 'loadClass']);
+      session_start();
     }
 
   /**
