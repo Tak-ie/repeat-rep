@@ -1,22 +1,22 @@
 <?php 
  
-  class Db{
+class Db{
 
-        protected $pdo;
+    protected $pdo;
 
-        public function connect(){
+    public function connect(){
 
-            $host = "localhost";
-            $db_name = "catalog";
-            $user = "root";
-            $password = "";
+        $host = "localhost";
+        $db_name = "catalog";
+        $user = "root";
+        $password = "";
 
-            $this->pdo = null;
+        $this->pdo = null;
 
-            try{
+        try{
                     
-                $dsn = "mysql:hostname=$host;dbname=$db_name";
-                $this->pdo = new PDO($dsn, $user, $password);
+            $dsn = "mysql:hostname=$host;dbname=$db_name";
+            $this->pdo = new PDO($dsn, $user, $password);
                 $this->pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_WARNING);
                 $this->pdo->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, PDO::FETCH_OBJ);
             }
@@ -28,7 +28,17 @@
             return $this->pdo;
         }
 
-        
+  /**  
+     * Select Method Api
+     *
+     * @param $tableName name of table
+     * @param Arr $columns   name of the column
+     * @param default:null $where     name of column
+     * @param $values value for the where column
+     * 
+     * @return Sql
+     * @throws Exception
+     **/      
   protected function select(string $tableName, $columns, $values = null, $where = null)
   {
           
