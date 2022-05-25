@@ -82,7 +82,7 @@
       
         function selectProperties($column=null,$where = null){
 
-            $columns =['id','title','menu_id','image','price','description','status'];
+            $columns =['id','title','menu_id','image','price','description','status','type'];
           
             if( $where !== null){
 
@@ -98,10 +98,7 @@
         }  
        
     }
-
-
-
-   
+      
 class Cart extends Db {
 
     private $id;

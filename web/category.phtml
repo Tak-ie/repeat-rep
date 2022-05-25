@@ -5,19 +5,21 @@
                 <h2 class="text-nowrap text-center" style="color:#d6d6d8;">Menu Category</h2>
             </div>
 
-           <?php if(isset($view)){?>
+           <?php
+
+           if(isset($view)){?>
             
            <div class="row photos">
            <?php foreach($values as $product): ?>
                 <div class="col-sm-6 col-md-4 col-lg-3 item"><a href="assets/img/<?php echo $product->image?>" data-lightbox="photos"><img class="img-thumbnail img-fluid" src="assets/img/<?php echo $product->image?>" data-bs-hover-animate="bounce" style="width:330px;height:200px;margin-top:15px;"></a>
                     <p class="text-center" style="color:#ffffff;margin-bottom:0px;"><?php echo $product->price;?>&nbsp;<button class="btn btn-dark btn-sm" name = "add to cart" type="button"><a href="food?id = <?php echo $product->id?>">Order</button></a></p>
-                    <p class="text-center" style="color:#ffffff;"><?php echo $product->title?></p>
+                    <p class="text-center" style="color:#ffffff;"><?php echo $product->title?></p><p style="color:#ffffff;"><?php echo $product->status;?></p>
                 </div>
                 
                 <?php  endforeach; ?>
                 <?php  }else{ ?>
             <section class="d-inline-flex row" style="padding:12px;width:100%;">      
-            <?php foreach($values as $product):?>
+            <?php foreach($value as $product):?>
             <div class="menu-tile col-md-6">
                 <div class="row">
                     <div class="col-sm-5">
@@ -33,7 +35,7 @@
                     <div class="menu-description col-sm-7">
                         <h3  style="color:rgb(255,255,255);"><?php echo $product->title;?></h3>
                         <p  class="menu-detail" style="color:#ffffff;"><em><?php echo $product->description;?></em></p>
-                        <p style="color:#ffffff;"><?php echo $product->status;?></p>
+                        
                     </div>
                 </div>
             </div> <?php endforeach;?>
