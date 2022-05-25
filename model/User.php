@@ -4,8 +4,6 @@
 
         private $tableName = 'menu';
         
-
-        
         protected $pdo;
 
         
@@ -78,11 +76,10 @@
         public function setImage(){
             $this->setImage = $image;
         
-    }
-
-      
+        }
 
         
+      
         function selectProperties($column=null,$where = null){
 
             $columns =['id','title','menu_id','image','price','description','status'];

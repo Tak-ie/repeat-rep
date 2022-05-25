@@ -36,8 +36,7 @@ class Db{
      * @param default:null $where     name of column
      * @param $values value for the where column
      * 
-     * @return Sql
-     * @throws Exception
+     * @return Sql/False
      **/      
   protected function select(string $tableName, $columns, $values = null, $where = null)
   {
@@ -66,9 +65,9 @@ class Db{
   
               if( $num > 0){
           
-                  $row = $stmt->fetchAll();
+                $row = $stmt->fetchAll();
           
-                  return $row;
+                return $row;
               }
         return false;
     }       
