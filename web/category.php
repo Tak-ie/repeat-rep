@@ -12,15 +12,20 @@ if(array_key_exists('view',$_GET)){
     $value= [];
     $i = 0;
     foreach($values as $val){
-        if(array_key_exists($val->type, $result)){
-           $value[$i] = $val; 
-           $result[$i] = $val->type;
-        }elseif(empty($value)){
+          
+        if(empty($value)){
             $result[$i] = $val->type;
             $value[$i] = $val;
             //echo "else";
         }
-        echo $i;
+        else{
+
+            if( ! array_key_exists($val->type, (array)$result)){
+
+            }else{
+                 $value[$i] = $val;
+            }
+        }
         $i++;
         
     }
