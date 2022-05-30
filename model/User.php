@@ -337,7 +337,14 @@ class Contact extends Db{
             return "Inserted";
         }
     }     
+}
 
+abstract class Types{
+
+    const VEGGIES = 0;
+    const CHICKEN = 1;
+    const STEW = 2;
+    const BEEF = 3;
 }
 
 

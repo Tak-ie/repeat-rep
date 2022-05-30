@@ -1,7 +1,9 @@
 <?php
 
+$a = Types::VEGGIES;
+var_dump($a);
 if(array_key_exists('view',$_GET)){
-        $act = $_GET['view'];
+        $View = $_GET['view'];
         $Products = new Products();
         $values = $Products->selectProperties('type', $_GET['view']);
 }else{
@@ -20,13 +22,13 @@ if(array_key_exists('view',$_GET)){
         }
         else{
 
-            if( ! array_key_exists($val->type, (array)$result)){
+            if(  array_key_exists($val->type, $result)){
 
             }else{
                  $value[$i] = $val;
             }
         }
         $i++;
-        
     }
 }
+
