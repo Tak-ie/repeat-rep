@@ -23,11 +23,7 @@ if(array_key_exists('submit',$_POST)){
     }
    
     if(!trim($category)){
-         foreach( $category as $value){
-            return $value;
-          }
-     }else{
-          $error['category'] = 'category cannot be empty';
+        $error['category'] = 'category cannot be empty';
     }
 
     if(!trim($comment)){
@@ -36,7 +32,7 @@ if(array_key_exists('submit',$_POST)){
 
 if(empty($error)){
         $user= new Contact();
-        $user->setInto('eric','mulondo','eric@gmail','0769405537','catering','memories of the year');
+        $user->setInto($firstName, $lastName, $email, $phone, $category, $comment);
 
     }
 

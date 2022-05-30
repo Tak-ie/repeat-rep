@@ -27,6 +27,7 @@ final class Index{
 
   private static $CLASS = [
     'Db' => '/model/db.php', 
+    'Types' => '/model/user.php', 
     'Products' => '/model/user.php',
     'NotFoundException'=> 'index.php',
     'Subscriber'=>'/model/user.php',

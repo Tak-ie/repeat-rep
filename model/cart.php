@@ -143,14 +143,13 @@ final class Cart {
     }
 
     public static function view(){
-        $i = 0;
+        
         $products[] = new Product;
         foreach( $_SESSION['cart'] as $pdt){
             $product = new ProductDao();
-            $products[$i++] = $product->selectProperties('id',(int)$pdt);
-        }
-        foreach( $products as $pdt){
-            self::$price += $pdt->getPrice();
+            $products[$pdt] = $product->selectProperties('id',(int)$pdt);
+        
+            self::$price += $products[$pdt]->getPrice();
         }
         return $products;
     }

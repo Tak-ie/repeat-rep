@@ -82,7 +82,7 @@
       
         function selectProperties($column=null,$where = null){
 
-            $columns =['id','title','menu_id','image','price','description','status'];
+            $columns =['id','title','menu_id','image','price','description','status','type'];
           
             if( $where !== null){
 
@@ -98,10 +98,7 @@
         }  
        
     }
-
-
-
-   
+      
 class Cart extends Db {
 
     private $id;
@@ -340,7 +337,14 @@ class Contact extends Db{
             return "Inserted";
         }
     }     
+}
 
+abstract class Types{
+
+    const VEGGIES = 0;
+    const CHICKEN = 1;
+    const STEW = 2;
+    const BEEF = 3;
 }
 
 
