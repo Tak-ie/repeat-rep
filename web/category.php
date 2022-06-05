@@ -1,34 +1,22 @@
 <?php
+    $types = [Types::BEEF, Types::STEW, Types::VEGGIES, Types::CHICKEN];
 
-$a = Types::VEGGIES;
-var_dump($a);
-if(array_key_exists('view',$_GET)){
-        $View = $_GET['view'];
+    if(array_key_exists('view',$_GET)){
+        $view = $_GET['view'];
+        if( array_key_exists($view, $types)){
+            $Products = new Products();
+            $values = $Products->selectProperties('type', $view);
+        }else{
+            throw new NotFoundException('The current '.$view.' food category is unavailable');
+        }
+    }else{
+
         $Products = new Products();
-        $values = $Products->selectProperties('type', $_GET['view']);
-}else{
-    $Products = new Products();
-    $values = $Products->selectProperties();
-//var_dump($values);
-    $result = [];
-    $value= [];
-    $i = 0;
-    foreach($values as $val){
-          
-        if(empty($value)){
-            $result[$i] = $val->type;
-            $value[$i] = $val;
-            //echo "else";
-        }
-        else{
-
-            if(  array_key_exists($val->type, $result)){
-
-            }else{
-                 $value[$i] = $val;
-            }
-        }
-        $i++;
+        $i = 0;
+        foreach( $types as $val ){
+            $value = $Products->selectProperties('type', $val );
+            $limit = rand(0,sizeof($value)-1);
+            $values[$i++] = $value[$limit];
+        }  
     }
-}
 

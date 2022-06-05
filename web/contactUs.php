@@ -1,4 +1,5 @@
 <?php
+unset($_SESSION['cart']);
 if(array_key_exists('submit',$_POST)){
     $firstName = $_POST['firstName'];
     $lastName =$_POST['lastName'];

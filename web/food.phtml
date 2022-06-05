@@ -3,41 +3,40 @@
         <div class="container">
             <h1 class="text-center" style="color:#f9ddd6;">CartItems</h1>
             <div class="table-responsive" style="padding:20px;padding-right:20px;">
-            <form action ='' method = 'POST'>
+            <form action ='food' method ='POST'>
                 <table class="table">
                     <thead style="padding:21px;padding-top:0px;padding-right:25px;padding-bottom:0px;padding-left:0px;">
                         <tr>
-                            <th style="color:#f9ddd6;">Id</th>
                             <th style="color:#f9ddd6;">Title</th>
                             <th style="color:#f9ddd6;">Price</th>
                             <th style="color:#f9ddd6;">Quantity</th>
                             <th style="color:#f9ddd6;">totalPrice</th>
                         </tr>
                     </thead>
-                    <?php foreach($products as $item):?>
+                    <?php 
+                            foreach($products as $item):
+                                foreach($item as $item):?>
                     <tbody>
-                       
                         <tr>
-                            
-                            
-                            <td style="color:#f9ddd6;"><?php echo $item->id;?></td>
-                            <td style="color:#f9ddd6;"><?php echo $item->title;?></td>
-                            <td style="color:#f9ddd6;"><?php echo $item->price;?></td>
+                            <td style="color:#f9ddd6;"><?= $item->title;?></td>
+                            <td style="color:#f9ddd6;"><?= $item->price;?></td>
                             
                             <td style="color:#f9ddd6;" >
                           
-                            <input type = "text" name="quant[]" value = "1" size = "7"  /> 
-                            <input type="submit" name="update" value="update"/>
+                            <input type ="number" name="qnt<?= $item->id ?>" id="<?= $item->id ?>"   size = "3" min="1" max="10" value="<?=Cart::qnt($item->id) ?>"/>
+                            <button name="update" id="<?= $item->id ?>" value="<?= $item->id ?>"> update </button>
+                            <button type="delete" name="delete" id="<?= $item->id ?>" value="<?= $item->id ?>"> delete </button>
                         </td>
-                        <td style="color:#f9ddd6;"><?php echo $item->price;?></td>
+                        <td style="color:#f9ddd6;"><?= $item->price * Cart::qnt($item->id)?></td>
                         </tr>
                         
-                        <?php endforeach;?>
-                        
-                        <tr>
-                        <td style="color:#f9ddd6;">Subtotal: </td><br/><br/>
+                        <?php 
+                                endforeach;
+                            endforeach;?>
+                        <th>
+                        <td style="color:#f9ddd6;">Subtotal: <?= Cart::getPrice();?></td><br/><br/>
                         <td style="color:#f9ddd6;"><input type="submit" name="submit" value="Confirm Order" class="btn btn-primary"/></td>
-                        </tr>
+                        </th>
                     
                     </tbody>
                    
@@ -46,3 +45,5 @@
             </div>
         </div>
     </section>
+
+  

@@ -82,7 +82,7 @@
       
         function selectProperties($column=null,$where = null){
 
-            $columns =['id','title','menu_id','image','price','description','status','type'];
+            $columns =['id','title','menu_id','image','price','description','status','type', 'special'];
           
             if( $where !== null){
 
@@ -99,7 +99,7 @@
        
     }
       
-class Cart extends Db {
+class Carts extends Db {
 
     private $id;
     private $title;
@@ -341,15 +341,71 @@ class Contact extends Db{
 
 abstract class Types{
 
-    const VEGGIES = 0;
-    const CHICKEN = 1;
-    const STEW = 2;
-    const BEEF = 3;
+    const VEGGIES = 2;
+    const CHICKEN = 3;
+    const STEW = 1;
+    const BEEF = 0;
 }
 
+class Cart{
+    private static $price = 0;
+    private static $qnt;
+    public function __construct(){
+        $_SESSION['cartId'] = rand(0,25);
+        $_SESSION['cart'] = [];
+        $_SESSION['qnt'] = [];
+    }
 
+    public static function add(int $id){
+        $_SESSION['cart'][$id] = $id;
+        $_SESSION['qnt'][$id] = 1;
+    }
 
+    public static function update(int $id, int $qnt){
+        $_SESSION['qnt'][$id] = $qnt;
+    }
 
+    public static function delete( int $id){
+        unset($_SESSION['cart'][$id]);
+        unset($_SESSION['qnt'][$id]);
+    }
+
+    public static function cart(){
+        $products[] = new Products;
+        foreach( $_SESSION['cart'] as $pdt){
+            $product = new Products();
+            $products[$pdt] = $product->selectProperties('id',(int)$pdt);
+        
+            $curbal = $products[$pdt][0]->price * $_SESSION['qnt'][$pdt];
+
+            self::$price += $curbal;
+        }
+        return $products;
+    }
+
+    public static function getPrice(){
+        return self::$price;
+    }
+
+    public static function getQnt(){
+        self::$qnt = $_SESSION['qnt'];
+        return self::$qnt;
+    }
+
+    public static function qnt(int $id){
+        $qnt = self::getQnt();
+        return $qnt[$id];
+    }
+
+    public static function btn(int $id){
+        if(! array_key_exists($id, $_SESSION['cart']))
+            return '<button class="btn btn-dark btn-sm" name ="addtocart" type="button"><a href="food&add='.$id.'">Order</button></a>';
+    }
+
+    public static function checkout(){
+                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+    }
+}
 
 
 

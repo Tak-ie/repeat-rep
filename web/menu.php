@@ -1,3 +1,9 @@
 <?php
+
+$types = [Types::BEEF, Types::STEW, Types::VEGGIES, Types::CHICKEN];
+
 $Products =new Products();
-$values = $Products->selectProperties();
+$i = 0;
+foreach( $types as $val ){
+    $values[$i++] =  $Products->selectProperties('type', $val );
+}
