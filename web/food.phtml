@@ -10,7 +10,7 @@
                             <th style="color:#f9ddd6;">Title</th>
                             <th style="color:#f9ddd6;">Price</th>
                             <th style="color:#f9ddd6;">Quantity</th>
-                            <th style="color:#f9ddd6;">totalPrice</th>
+                            <th style="color:#f9ddd6;">SubTotal</th>
                         </tr>
                     </thead>
                     <?php 
@@ -34,8 +34,8 @@
                                 endforeach;
                             endforeach;?>
                         <th>
-                        <td style="color:#f9ddd6;">Subtotal: <?= Cart::getPrice();?></td><br/><br/>
-                        <td style="color:#f9ddd6;"><input type="submit" name="submit" value="Confirm Order" class="btn btn-primary"/></td>
+                        <td style="color:#f9ddd6;">Total: <?= Cart::getPrice() ?></td><br/><br/><td></td>
+                        <td style="color:#f9ddd6;"><input type="submit" name="checkout" value="Confirm Order" class="btn btn-success"/></td>
                         </th>
                     
                     </tbody>

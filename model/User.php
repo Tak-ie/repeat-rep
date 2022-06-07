@@ -395,15 +395,18 @@ class Cart{
     public static function qnt(int $id){
         $qnt = self::getQnt();
         return $qnt[$id];
-    }
+    } 
 
     public static function btn(int $id){
         if(! array_key_exists($id, $_SESSION['cart']))
-            return '<button class="btn btn-dark btn-sm" name ="addtocart" type="button"><a href="food&add='.$id.'">Order</button></a>';
+            return '<a href="food&add='.$id.'"><button class="btn btn-dark btn-sm" name ="addtocart" type="button">Order</button></a>';
     }
 
     public static function checkout(){
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             
+        
+         
+
+        unset($_SESSION['cartId']);
     }
 }
 
