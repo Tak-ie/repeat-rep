@@ -2,13 +2,13 @@
 <?php
     foreach($values as $ent):
         if($ent[0]->type == Types::BEEF): 
-            echo '<br/><h1 class="text-center" style="color:#f9ddd6;">Beef</h1><br/>' ;
+            echo '<hr/><br/><h1 class="text-center" style="color:#f9ddd6;">Beef</h1><br/><hr/>' ;
         elseif($ent[0]->type == Types::STEW):
-            echo '<br/><h1 class="text-center" style="color:#f9ddd6;">Beef Stew</h1><br/>';
+            echo '<hr/><br/><h1 class="text-center" style="color:#f9ddd6;">Beef Stew</h1><br/><hr/>';
         elseif($ent[0]->type == Types::VEGGIES):
-            echo '<br/><h1 class="text-center" style="color:#f9ddd6;">Veggies</h1><br/>';
+            echo '<hr/><br/><h1 class="text-center" style="color:#f9ddd6;">Veggies</h1><br/><hr/>';
         elseif($ent[0]->type == Types::CHICKEN):
-            echo '<br/><h1 class="text-center" style="color:#f9ddd6;">Chicken</h1><br/> ';
+            echo '<hr/><br/><h1 class="text-center" style="color:#f9ddd6;">Chicken</h1><br/><hr/> ';
         endif;
         
         foreach($ent as $product):
