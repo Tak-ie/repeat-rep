@@ -157,12 +157,9 @@ class Carts extends Db {
         $stmt->execute();
         $row=$stmt->rowCount(); 
         if ($row > 0){
-            
-            $row = $stmt->fetchAll();
-                                
-                return $row;
+            $row = $stmt->fetchAll();   
+            return $row;
         }
-        
         return false;
     }
     

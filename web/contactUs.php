@@ -1,6 +1,5 @@
 <?php
-unset($_SESSION['cart']);
-unset($_SESSION['cartId']);
+
 if(array_key_exists('submit',$_POST)){
     $firstName = $_POST['firstName'];
     $lastName =$_POST['lastName'];
@@ -35,7 +34,6 @@ if(array_key_exists('submit',$_POST)){
 if(empty($error)){
         $user= new Contact();
         $user->setInto($firstName, $lastName, $email, $phone, $category, $comment);
-
     }
 
 }
