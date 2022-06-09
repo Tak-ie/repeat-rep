@@ -1,7 +1,7 @@
 <?php
 //check if form is submitted
 if(array_key_exists('submit',$_POST)){
-    
+
     $fullName = $_POST['fullName'];
     $phoneNo = $_POST['phoneNo'];
     $email =$_POST['email'];
@@ -34,3 +34,5 @@ if(array_key_exists('submit',$_POST)){
 
 
 }
+$cart =  Cart(::cart);
+$cart->Cart::getPrice();

@@ -525,7 +525,7 @@ class Cart{
         
          
 
-        unset($_SESSION['cartId']);
+       // unset($_SESSION['cartId']);
     }
 }
 
