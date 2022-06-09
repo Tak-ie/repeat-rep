@@ -34,5 +34,4 @@ if(array_key_exists('submit',$_POST)){
 
 
 }
-$cart =  Cart(::cart);
-$cart->Cart::getPrice();
+$cart =  Cart::cart();

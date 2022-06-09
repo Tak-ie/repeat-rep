@@ -13,7 +13,7 @@
             <div class="order-labell">
                 <p>Address</p><?php echo isset($error['address'])?$error['address'] :''?><textarea class="input-response" name="address"></textarea></div>
             <div class="order-labell">
-                <p>Total:<? ?></p>
+                <p>Total:<?=Cart::getPrice() ?></p>
             </div>
             <div class="order-labell">
                 <p>Cash on delivery</p>
