@@ -14,6 +14,7 @@
                         </tr>
                     </thead>
                     <?php 
+                    //retrieve items within nested loop
                             foreach($products as $item):
                                 foreach($item as $item):?>
                     <tbody>
@@ -34,8 +35,8 @@
                                 endforeach;
                             endforeach;?>
                         <th>
-                        <td style="color:#f9ddd6;">Total: <?= Cart::getPrice() ?></td><br/><br/><td></td>
-                        <td style="color:#f9ddd6;"><input type="submit" name="checkout" value="Confirm Order" class="btn btn-success"/></td>
+                        <td style="color:#f9ddd6;">Total:<?= Cart::getPrice() ?></td><br/><br/><td></td>
+                        <td style="color:#f9ddd6;"><a href="checkOut"><input type="submit" name="checkout" value="Confirm Order" class="btn btn-success"/></a></td>
                         </th>
                     
                     </tbody>

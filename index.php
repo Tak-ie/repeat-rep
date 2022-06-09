@@ -33,7 +33,8 @@ final class Index{
     'Subscriber'=>'/model/user.php',
     'Cart'=>'/model/user.php',
     'CartItem'=>'/model/user.php',
-    'Contact' => '/model/user.php'
+    'Contact' => '/model/user.php',
+    'Billing' => '/model/user.php'
   ];
 
     /**

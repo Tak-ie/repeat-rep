@@ -1,5 +1,5 @@
 <?php
-
+//check if button is pressed and get the values from the form 
 if(array_key_exists('submit',$_POST)){
     $firstName = $_POST['firstName'];
     $lastName =$_POST['lastName'];
@@ -7,7 +7,7 @@ if(array_key_exists('submit',$_POST)){
     $phone = $_POST['phone'];
     $category = $_POST['category'];
     $comment =$_POST['comment'];
-
+//form validation
     $error=[];
     if(!trim($firstName)){
         $error['firstName'] = 'first name cannot be empty';

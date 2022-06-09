@@ -77,9 +77,17 @@
             $this->setImage = $image;
         
         }
+ 
+ /**  
+     * SelectProperties Method Api
+     *
+     * @param Arr $columns name of the table
+     * @param default:null $where name of column
+     * @param default:null $column  of the table
+     * 
+     * @return Sql
+     **/ 
 
-
-      
         function selectProperties($column=null,$where = null){
 
             $columns =['id','title','menu_id','image','price','description','status','type', 'special'];
@@ -144,7 +152,16 @@ class Carts extends Db {
         $this->quantity = $quantity;
     }
     
-   
+    /**  
+     * Select Method Api
+     *
+     * @param $tableName name of table
+     * @param Arr $columns   name of the column
+     * @param default:null $where     name of column
+     * @param $values value for the where column
+     * 
+     * @return Sql/False
+     **/ 
     //retrieve items inside the cart
     public function retrieve(){
         $wher = implode(',', $_SESSION['cart']);
@@ -262,7 +279,17 @@ class Subscriber extends Db{
     public function email(){
         return $this->email;
     }
-       
+     
+     /**  
+     * inserto Method
+     * @param insert items into the database
+     * @param arguments are columns   name of the column
+     * @access  public
+     * @param $values value for the where column
+     * 
+     * @return string
+     **/ 
+
     public function inserto($firstName,$lastName,$email){
     
         $sql ="INSERT INTO customer(`Firstname`,`Lastname`,`Email`) VALUES (?,?,?)";
@@ -294,29 +321,60 @@ class Contact extends Db{
         
     }
 
-    public function firstname(){
+    public function getFirstname(){
         return $this->firstname;
     }
 
-    public function lastname(){
+    public function setFirstname($firstName){
+         $this->firstname = $firstName;
+    }
+
+    public function getLastname(){
         return $this->lastname;
     }
 
-    public function email(){
+    public function setLastname($lastName){
+         $this->lastname = $lastName;
+    }
+    public function getEmail(){
         return $this->email;
     }
 
-    public function phone(){
+    public function setEmail($email){
+        return $this->email = $email;
+    }
+
+    public function getPhone(){
         return $this->phone;
     }
 
-    public function category(){
+    public function setPhone($phone){
+        $this->phone = $phone;
+    }
+    public function getCategory(){
         return $this->category;
     }
 
-    public function message(){
+    public function setCategory($category){
+         $this->category = $category;
+    }
+
+    public function getMessage(){
         return $this->message;
     }
+
+    public function setMessage($message){
+         $this->message = $message;
+    }
+
+ 
+     /**  
+     * setinto Method
+     * @param insert items into the database table
+     * @param arguments are columns   name of the table
+     * @access  public 
+     * @return string
+     **/
 
     //insert into db
     public function  setInto($firstname,$lastname, $email,$phone,$category,$message){
@@ -336,8 +394,20 @@ class Contact extends Db{
     }     
 }
 
+
+
+/**  
+     *@param abstract class type
+     * @param declare menu types using enumeration
+     * @param default:const variables
+     * @return null
+    
+     **/
+
 abstract class Types{
 
+    
+   
     const VEGGIES = 2;
     const CHICKEN = 3;
     const STEW = 1;
@@ -348,25 +418,56 @@ class Cart{
     private static $price = 0;
     private static $qnt;
     public function __construct(){
+        //declare sessions 
         $_SESSION['cartId'] = rand(0,25);
         $_SESSION['cart'] = [];
         $_SESSION['qnt'] = [];
     }
-
+    /**  
+     * add  Method 
+     * @param add items to the cart
+     * @param sets session cart
+     * @param initialise default quantiy
+     **/
+//add product ids to the cart
     public static function add(int $id){
         $_SESSION['cart'][$id] = $id;
         $_SESSION['qnt'][$id] = 1;
     }
 
+    /**  
+     * update  Method  
+     * @param update quantity depending on id
+     * @param int,int
+     * @access public
+     **/
+
     public static function update(int $id, int $qnt){
         $_SESSION['qnt'][$id] = $qnt;
     }
+
+    /**  
+     * delete  Method  
+     * @param unset cart & quantity depending on id of product
+     * @param int
+     * @access public
+     **/
 
     public static function delete( int $id){
         unset($_SESSION['cart'][$id]);
         unset($_SESSION['qnt'][$id]);
     }
 
+     /**  
+     * Cart Method 
+     *
+     * @param nested foreach loop to getitems
+     * @param calls product class
+     * @param retrieve items using nested loops
+     * @param calculate current price by quantity 
+     * @return $products
+     **/ 
+//calls products methods,nested foreach loop,getitems inside the nested loop,returns/calculate total price
     public static function cart(){
         $products[] = new Products;
         foreach( $_SESSION['cart'] as $pdt){
@@ -380,19 +481,40 @@ class Cart{
         return $products;
     }
 
+     /**  
+     * getPrice  Method 
+     * 
+     * @return return price through the static property
+     **/ 
+
     public static function getPrice(){
         return self::$price;
     }
+     /**  
+     * getQnt  Method 
+     * 
+     * @return return all products through the static property
+     **/
 
     public static function getQnt(){
         self::$qnt = $_SESSION['qnt'];
         return self::$qnt;
     }
-
+    /**  
+     * getQnt  Method 
+     * 
+     * @return return single products through the static property
+     **/
     public static function qnt(int $id){
         $qnt = self::getQnt();
         return $qnt[$id];
+       
     } 
+    /**  
+     * btn  Method 
+     * @param int:id of the product
+     * @return display button only when item is available
+     **/
 
     public static function btn(int $id){
         if(! array_key_exists($id, $_SESSION['cart']))
@@ -407,6 +529,71 @@ class Cart{
     }
 }
 
+
+class Billing extends Db{
+    private $tableName = 'users';
+    private $fullName;
+    private $phoneNo;
+    private $email;
+    private $address;
+    private $cashOnDelivery;    
+    
+
+
+    public function __construct(){
+        $this->pdo = $this->connect(); 
+        
+    }
+
+    public function getFullName(){
+        return $this->fullName;
+    }
+
+    public function setFullName($fullName){
+         $this->fullName =$fullName;
+    }
+
+
+    public function getPhoneNo(){
+        return $this->phoneNo;
+    }
+
+    public function setPhoneNo($phoneNo){
+         $this->phoneNo = $phoneNo;
+    }
+
+    public function getEmail(){
+        return $this->email;
+    }
+
+    public function setEmail($email){
+         $this->email =$email;
+    }
+    public function getAddress(){
+        return $this->address;
+    }
+
+    public function setAddress($address){
+         $this->address =$address;
+    }
+
+   
+
+    
+    //insert delivery details to the db
+    public function  details($fullName,$phoneNo, $email,$address){
+        $sql ="INSERT INTO users (`fullName`, `phoneNo`, `email`,`address`) VALUES (?,?,?,?)";
+        $stmt = $this->pdo->prepare($sql);
+
+        $stmt->bindParam(1,$fullName);
+        $stmt->bindParam(2,$phoneNo);
+        $stmt->bindParam(3,$email);
+        $stmt->bindParam(4,$address);
+        if($stmt->execute()){
+            return "Inserted";
+        }
+    }
+}    
 
 
 
