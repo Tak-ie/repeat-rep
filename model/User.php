@@ -89,156 +89,28 @@
      **/ 
 
         function selectProperties($column=null,$where = null){
+            try{
+                $columns =['id','title','menu_id','image','price','description','status','type', 'special'];
+            
+                if( $where !== null){
 
-            $columns =['id','title','menu_id','image','price','description','status','type', 'special'];
-          
-            if( $where !== null){
+                    $values = [$where];
+                    
+                    $result= $this->select($this->tableName, $columns,$values,$column);
+                    return $result;
+                }else{
 
-                $values = [$where];
-                 
-                $result= $this->select($this->tableName, $columns,$values,$column);
-                return $result;
-            }else{
-
-                $result= $this->select($this->tableName, $columns);
-                return $result;
-            }
+                    $result= $this->select($this->tableName, $columns);
+                    return $result;
+                }
+            }catch(PDOEXCEPTION $e){
+                echo $e->message();
+                return false;
+            }    
         }  
        
     }
-      
-class Carts extends Db {
 
-    private $id;
-    private $title;
-    private $price;
-    private $quantity;
-    private $tableName ='cart';
-    
-    public function __construct(){
-        $this->pdo =$this->connect();
-    }
-    
-    public function getId(){
-        return $this->id;
-    }
-    
-    public function setId($id){
-        $this->$id;
-    }
-    
-    public function getTitle(){
-        return $this->title;
-    }
-    
-    public function setTitle($id){
-        $this->$title = $title;
-    }
-    
-    public function getPrice(){
-        return $this->price;
-    }
-    
-    public function setPrice($price){
-        $this->price = $price;
-    }
-    
-    
-    public function getQuantity(){
-        return $this->quantity;
-    }
-    
-    public function setQuantity($quantity){
-        $this->quantity = $quantity;
-    }
-    
-    /**  
-     * Select Method Api
-     *
-     * @param $tableName name of table
-     * @param Arr $columns   name of the column
-     * @param default:null $where     name of column
-     * @param $values value for the where column
-     * 
-     * @return Sql/False
-     **/ 
-    //retrieve items inside the cart
-    public function retrieve(){
-        $wher = implode(',', $_SESSION['cart']);
-        $sql = "SELECT  id, price,title FROM $this->tableName WHERE id IN  ($wher) ";
-            
-        $this->pdo = $this->connect();  
-        $stmt = $this->pdo->prepare($sql);
-        //$stmt->bindParam(1,$age);
-        
-        $stmt->execute();
-        $row=$stmt->rowCount(); 
-        if ($row > 0){
-            $row = $stmt->fetchAll();   
-            return $row;
-        }
-        return false;
-    }
-    
-    //insert items to cart db
-    public function getDetail(){
-        $details = $this->retrieve() ;
-        //var_dump($details);
-        foreach($details as $task){
-            $sql = "INSERT INTO $this->tableName(id,title,price) values(?,?,?)";
-            $stmt=$this->pdo->prepare($sql);
-            if($stmt->execute([$task->id,$task->title,$task->price])){
-                echo'sucessful';
-            }else{
-                echo 'not processed';
-            }
-            //var_dump($details);
-        }
-            
-        // return $details;
-        
-    }
-    
-    //update item quantity
-    public function update(){
-        $ht = $_SESSION['qty'];
-        //var_dump($quantity);
-        var_dump($ht);
-        $sql = "UPDATE $this->tableName SET quantity = $ht WHERE id = $this->id ";
-            $stmt = $this->pdo->prepare($sql);
-            $stmt->execute();
-            echo 'data updated to db';
-        
-    }
-    
-    //get total items inthe cart
-    public function getTotal(){
-        $num = 0;
-        if(isset($_SESSION['cart'])){
-            foreach($_SESSION['cart'] as $item){
-                $num = $num + $item;
-            }
-        }
-        return $num;
-    }
-    
-    /*
-    public function get_price() 
-        {
-            $price = $this->retrieve();
-           
-            foreach ($price as $product)
-            {
-                if ($product -> id == $this->id)
-                {
-                    var_dump($product -> price);
-                    return $product -> price;
-                }
-                    
-            }	
-        }*/
-    
-}
 
 //error class
 class  Subscribe{
@@ -291,16 +163,20 @@ class Subscriber extends Db{
      **/ 
 
     public function inserto($firstName,$lastName,$email){
-    
-        $sql ="INSERT INTO customer(`Firstname`,`Lastname`,`Email`) VALUES (?,?,?)";
-        $stmt = $this->pdo->prepare($sql);
-        $stmt->bindParam(1,$firstName);
-        $stmt->bindParam(2,$lastName);
-        $stmt->bindParam(3,$email);
-                
-        if($stmt->execute()){
-            return "Inserted";
-        }
+        try{
+            $sql ="INSERT INTO customer(`Firstname`,`Lastname`,`Email`) VALUES (?,?,?)";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->bindParam(1,$firstName);
+            $stmt->bindParam(2,$lastName);
+            $stmt->bindParam(3,$email);
+                    
+            if($stmt->execute()){
+                return "Inserted";
+            }
+        }catch(PDOEXEPTION $e){
+            echo $e->message();
+            return false;
+        }    
     }
 }
 
@@ -378,19 +254,25 @@ class Contact extends Db{
 
     //insert into db
     public function  setInto($firstname,$lastname, $email,$phone,$category,$message){
-        $sql ="INSERT INTO contact_us (`Firstname`, `Lastname`,  `Email`,`Phone`, `Category`,  `Message`) VALUES (?,?,?,?,?,?)";
-        $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindParam(1,$firstname);
-        $stmt->bindParam(2,$lastname);
-        $stmt->bindParam(3,$email);
-        $stmt->bindParam(4,$phone);
-        $stmt->bindParam(5,$category);
-        $stmt->bindParam(6,$message);
+        try{
+            $sql ="INSERT INTO contact_us (`Firstname`, `Lastname`,  `Email`,`Phone`, `Category`,  `Message`) VALUES (?,?,?,?,?,?)";
+            $stmt = $this->pdo->prepare($sql);
 
-        if($stmt->execute()){
-            return "Inserted";
-        }
+            $stmt->bindParam(1,$firstname);
+            $stmt->bindParam(2,$lastname);
+            $stmt->bindParam(3,$email);
+            $stmt->bindParam(4,$phone);
+            $stmt->bindParam(5,$category);
+            $stmt->bindParam(6,$message);
+
+            if($stmt->execute()){
+                return "Inserted";
+            }
+        }catch(PDOEXEPTION $e){
+            echo $e->message();
+            return false;
+        }    
     }     
 }
 
@@ -431,8 +313,12 @@ class Cart{
      **/
 //add product ids to the cart
     public static function add(int $id){
-        $_SESSION['cart'][$id] = $id;
-        $_SESSION['qnt'][$id] = 1;
+        try{
+            $_SESSION['cart'][$id] = $id;
+            $_SESSION['qnt'][$id] = 1;
+        }catch(PDOEXEPTION $e){
+            echo $e->message();
+        }    
     }
 
     /**  
@@ -469,16 +355,21 @@ class Cart{
      **/ 
 //calls products methods,nested foreach loop,getitems inside the nested loop,returns/calculate total price
     public static function cart(){
-        $products[] = new Products;
-        foreach( $_SESSION['cart'] as $pdt){
-            $product = new Products();
-            $products[$pdt] = $product->selectProperties('id',(int)$pdt);
-        
-            $curbal = $products[$pdt][0]->price * $_SESSION['qnt'][$pdt];
+        try{
+            $products[] = new Products;
+            foreach( $_SESSION['cart'] as $pdt){
+                $product = new Products();
+                $products[$pdt] = $product->selectProperties('id',(int)$pdt);
+            
+                $curbal = $products[$pdt][0]->price * $_SESSION['qnt'][$pdt];
 
-            self::$price += $curbal;
-        }
-        return $products;
+                self::$price += $curbal;
+            }
+            return $products;
+        }catch(PDOEXEPTION $e) {
+            echo $e->message();
+            return false;
+        }   
     }
 
      /**  
@@ -582,16 +473,21 @@ class Billing extends Db{
     
     //insert delivery details to the db
     public function  details($fullName,$phoneNo, $email,$address){
-        $sql ="INSERT INTO users (`fullName`, `phoneNo`, `email`,`address`) VALUES (?,?,?,?)";
-        $stmt = $this->pdo->prepare($sql);
+        try{
+            $sql ="INSERT INTO users (`fullName`, `phoneNo`, `email`,`address`) VALUES (?,?,?,?)";
+            $stmt = $this->pdo->prepare($sql);
 
-        $stmt->bindParam(1,$fullName);
-        $stmt->bindParam(2,$phoneNo);
-        $stmt->bindParam(3,$email);
-        $stmt->bindParam(4,$address);
-        if($stmt->execute()){
-            return "Inserted";
-        }
+            $stmt->bindParam(1,$fullName);
+            $stmt->bindParam(2,$phoneNo);
+            $stmt->bindParam(3,$email);
+            $stmt->bindParam(4,$address);
+            if($stmt->execute()){
+                return "Inserted";
+            }
+        }catch(PDOEXEPTION $e){
+            echo $e_>message();
+            return false;
+        }    
     }
 }    
 

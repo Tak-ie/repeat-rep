@@ -42,7 +42,7 @@
                     <div class="menu-description col-sm-7">
                         <h3  style="color:rgb(255,255,255);"><?= $product->title;?></h3>
                         <p  class="menu-detail" style="color:#ffffff;"><em><?= $product->description;?></em><br></p>
-                        <p style="color:#ffffff;"><?= ($product->status == 1)?'Instock' :'Unavailable'; ?></p>
+                        <p style="color:#ffffff;"><?= ($product->status == 1)?'Instock' :'Unavailable'; ?> &nbsp<?= ($product->status == 1 && $product->special == 1)?'<button class="btn btn-light btn-sm"type="button">onspecial</button>':'';?></p>
                     </div>
                 </div>
             </div> 

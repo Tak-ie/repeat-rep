@@ -1,26 +1,18 @@
-
-
-<section class="container">
-    <form action = '' method = 'POST'>
-        <fieldset style="background-color:#61122f;color:#ffffff;">
-            <legend style="margin-bottom:26px;">Delivery Details</legend>
-            <div class="order-labell">
-                <p>Full Names</p><?php echo isset($error['fullName'])?$error['fullName'] :''?><input type="text" class="input-response" name="fullName"></div>
-            <div class="order-labell">
-                <p>Phone Number</p><?php echo isset($error['phoneNo'])?$error['phoneNo'] :''?><input type="tel" class="input-response" name="phoneNo"></div>
-            <div class="order-labell">
-                <p>Email</p><?php echo isset($error['email'])?$error['email'] :''?><input type="email" class="input-response" name="email"></div>
-            <div class="order-labell">
-                <p>Address</p><?php echo isset($error['address'])?$error['address'] :''?><textarea class="input-response" name="address"></textarea></div>
-            <div class="order-labell">
-                <p>Total:<?=Cart::getPrice() ?></p>
-            </div>
-            <div class="order-labell">
+    <div class="article-list"></div>
+    <div class="register-photo" style="background-color:#61122f;"> 
+        <div class="form-container" style="height:490px;">
+            <form action = '' method="post" style="background-color:#61122f;color:#ffffff border-radius: 25px;">    
+            <fieldset style="background-color:#61122f;color:#ffffff; border-radius:25px;">
+                <legend style="margin-bottom:26px">Delivery Details</legend>
+                <div class="form-group"style ="border-radius:25px"><p>Full Names</p><?= isset($error['fullName'])?$error['fullName'] :''?><input class="form-control" type="text" name="fullName" style ="color:#000000; border-radius:5px" ></div>
+                <div class="form-group"><p>Phone Number</p><?= isset($error['phoneNo'])?$error['phoneNo'] :''?><input class="form-control" type="text" name="phoneNo" style ="color:#000000;border-radius:5px" ></div>
+                <div class="form-group"><p>Email</p><?= isset($error['email'])?$error['email'] :''?><input class="form-control" type="email" name="email"style ="color:#000000;border-radius:5px"></div>
+                <div class="form-group"><p>Address</p><?= isset($error['address'])?$error['address'] :''?><textarea class="form-control" name="address"style ="color:#000000;border-radius:5px"></textarea></div>
                 <p>Cash on delivery</p>
-                <div class="form-check"><?php echo isset($error['checkbox'])?$error['checkbox'] :''?><input class="form-check-input" checked type="radio" id="formCheck-1" name="checkbox"><label class="form-check-label" for="formCheck-1">Checked</label></div>
+                <div class="form-check"><?= isset($error['checkbox'])?$error['checkbox'] :''?><input class="form-check-input"  type="radio" id="formCheck-1" name="checkbox"><label class="form-check-label" for="formCheck-1">Checkbox</label></div><br/>
+                <a href="message"><button type="submit" class="btn btn-success-outline">Purchase</a></botton></div>
                 
-                <button class="btn btn-primary float-left" type="submit" name="submit" style="width:124px;">Purchase</button></div>
-                
-        </fieldset>
-    </form>
-</section>
+            </fieldset>
+            </form>
+        </div>
+    </div>

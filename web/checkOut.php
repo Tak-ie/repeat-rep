@@ -7,6 +7,7 @@ if(array_key_exists('submit',$_POST)){
     $email =$_POST['email'];
     $address = $_POST['address'];
     $checkbox = $_POST['checkbox'];
+  
 //form validation
     $error=[];
     if(!trim($fullName)){
@@ -26,8 +27,10 @@ if(array_key_exists('submit',$_POST)){
         $error['checkbox'] = 'checkbox  cannot be unchecked';
     }
 
+
     if(empty($error)){
-        echo 'your order has been proccessed';
+        
+    
         $contacts= new Billing();
         $contacts->details($fullName, $phoneNo, $email, $address);
     }
