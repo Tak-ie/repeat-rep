@@ -472,15 +472,15 @@ class Billing extends Db{
 
     
     //insert delivery details to the db
-    public function  details($fullName,$phoneNo, $email,$address){
+    public function  details($fullName,$phoneNo, $email){
         try{
-            $sql ="INSERT INTO users (`fullName`, `phoneNo`, `email`,`address`) VALUES (?,?,?,?)";
+            $sql ="INSERT INTO `customer` (`firstname`, `lastname`, `email`) VALUES (?,?,?)";
             $stmt = $this->pdo->prepare($sql);
 
             $stmt->bindParam(1,$fullName);
             $stmt->bindParam(2,$phoneNo);
             $stmt->bindParam(3,$email);
-            $stmt->bindParam(4,$address);
+            //$stmt->bindParam(4,$address);
             if($stmt->execute()){
                 return "Inserted";
             }
