@@ -33,6 +33,7 @@ if(array_key_exists('order',$_POST)){
         $ordMsg = '<div class ="alert alert-success" style = "color:green">Order placed succefully</div>';
         $contacts= new Billing();
         $contacts->details($fullName, $phoneNo, $address);
+        Cart::checkout();
     }
 }
 $cart =  Cart::cart();

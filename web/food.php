@@ -17,7 +17,6 @@ if( array_key_exists('add', $_GET)){
 }elseif( array_key_exists('delete', $_POST)){
     $id = $_POST['delete'];
     Cart::delete($id);
-}elseif(array_key_exists('checkout', $_POST)){
-    Cart::checkout();
 }
+
 $products = Cart::cart();

@@ -414,9 +414,7 @@ class Cart{
 
     public static function checkout(){
         
-         
-
-       // unset($_SESSION['cartId']);
+       unset($_SESSION['cartId']);
     }
 }
 
