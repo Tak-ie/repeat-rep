@@ -20,13 +20,11 @@
         
         function __construct(){
             $this->pdo = $this->connect();
-           
         } 
         
         public  function Description() {
             return $this->description;
         }
-        
 
         public function getName(){
             return $this->name;
@@ -56,6 +54,7 @@
         public function setName($name){
             $this->name=$name;
         }
+
         public  function getDestination(){
             return $this->destination;
         }
@@ -63,7 +62,6 @@
         public function getMenu_id(){
             return $menuid;
         }
-
 
         public function setId($id){
              $this->id=$id;
@@ -75,7 +73,6 @@
         
         public function setImage(){
             $this->setImage = $image;
-        
         }
  
  /**  
@@ -103,12 +100,10 @@
                     $result= $this->select($this->tableName, $columns);
                     return $result;
                 }
-            }catch(PDOEXCEPTION $e){
-                echo $e->message();
-                return false;
+            }catch(PDOException $e){
+                throw $e;
             }    
         }  
-       
     }
 
 
@@ -161,7 +156,6 @@ class Subscriber extends Db{
      * 
      * @return string
      **/ 
-
     public function inserto($firstName,$lastName,$email){
         try{
             $sql ="INSERT INTO customer(`Firstname`,`Lastname`,`Email`) VALUES (?,?,?)";
@@ -173,9 +167,8 @@ class Subscriber extends Db{
             if($stmt->execute()){
                 return "Inserted";
             }
-        }catch(PDOEXEPTION $e){
-            echo $e->message();
-            return false;
+        }catch(PDOException $e){
+            throw $e;
         }    
     }
 }
@@ -189,12 +182,9 @@ class Contact extends Db{
     private $phone;
     private $category;
     private $message;
-            
-    
 
     public function __construct(){
         $this->pdo = $this->connect(); 
-        
     }
 
     public function getFirstname(){
@@ -242,17 +232,15 @@ class Contact extends Db{
     public function setMessage($message){
          $this->message = $message;
     }
-
  
      /**  
-     * setinto Method
+     * setinto Method  //insert into db
      * @param insert items into the database table
      * @param arguments are columns   name of the table
      * @access  public 
      * @return string
      **/
-
-    //insert into db
+  
     public function  setInto($firstname,$lastname, $email,$phone,$category,$message){
 
         try{
@@ -269,9 +257,8 @@ class Contact extends Db{
             if($stmt->execute()){
                 return "Inserted";
             }
-        }catch(PDOEXEPTION $e){
-            echo $e->message();
-            return false;
+        }catch(PDOException $e){
+            throw $e;
         }    
     }     
 }
@@ -288,8 +275,6 @@ class Contact extends Db{
 
 abstract class Types{
 
-    
-   
     const VEGGIES = 2;
     const CHICKEN = 3;
     const STEW = 1;
@@ -313,12 +298,8 @@ class Cart{
      **/
 //add product ids to the cart
     public static function add(int $id){
-        try{
             $_SESSION['cart'][$id] = $id;
-            $_SESSION['qnt'][$id] = 1;
-        }catch(PDOEXEPTION $e){
-            echo $e->message();
-        }    
+            $_SESSION['qnt'][$id] = 1;   
     }
 
     /**  
@@ -366,9 +347,8 @@ class Cart{
                 self::$price += $curbal;
             }
             return $products;
-        }catch(PDOEXEPTION $e) {
-            echo $e->message();
-            return false;
+        }catch(Exception $e) {
+            throw $e;
         }   
     }
 
@@ -409,7 +389,8 @@ class Cart{
 
     public static function btn(int $id){
         if(! array_key_exists($id, $_SESSION['cart']))
-            return '<a href="food&add='.$id.'"><button class="btn btn-dark btn-sm" name ="addtocart" type="button">Order</button></a>';
+            return '<a href="food&add='.$id.'"><button class="btn btn-dark btn-sm" 
+                        name ="addtocart" type="button">Order</button></a>';
     }
 
     public static function checkout(){
@@ -427,11 +408,8 @@ class Billing extends Db{
     private $address;
     private $cashOnDelivery;    
     
-
-
     public function __construct(){
         $this->pdo = $this->connect(); 
-        
     }
 
     public function getFullName(){
@@ -441,7 +419,6 @@ class Billing extends Db{
     public function setFullName($fullName){
          $this->fullName =$fullName;
     }
-
 
     public function getPhoneNo(){
         return $this->phoneNo;
@@ -463,11 +440,8 @@ class Billing extends Db{
     }
 
     public function setAddress($address){
-         $this->address =$address;
+         $this->address = $address;
     }
-
-   
-
     
     //insert delivery details to the db
     public function  details($fullName,$phoneNo, $email){
@@ -482,9 +456,8 @@ class Billing extends Db{
             if($stmt->execute()){
                 return "Inserted";
             }
-        }catch(PDOEXEPTION $e){
-            echo $e_>message();
-            return false;
+        }catch(PDOException $e){
+            throw $e;
         }    
     }
 }    
