@@ -32,17 +32,15 @@
                         align-content-md-center align-content-lg-center align-content-xl-center menu-price"
                             style="color:#ffffff;margin-left:5px;">
                             <p  class="text-center d-flex" style="width:146px;"> <?= $product->price;?>&nbsp;&nbsp
-                            <?php 
-                                if($product->status == 1):
-                                    echo Cart::btn($product->id);   
-                                endif 
+                            <?= 
+                                ($product->status == 1)?Cart::btn($product->id):''
                             ?></p>
                         </div>
                     </div> 
                     <div class="menu-description col-sm-7">
                         <h3  style="color:rgb(255,255,255);"><?= $product->title;?></h3>
                         <p  class="menu-detail" style="color:#ffffff;"><em><?= $product->description;?></em><br></p>
-                        <p style="color:#ffffff;"><?= ($product->status == 1)?'Instock' :'Unavailable'; ?> &nbsp<?= ($product->status == 1 && $product->special == 1)?'<button class="btn btn-light btn-sm"type="button">onspecial</button>':'';?></p>
+                        <p style="color:#ffffff;"><?= ($product->status == 1)?'Instock' :'Unavailable'; ?> &nbsp<?= ($product->status == 1 && $product->special == 1)?'<button class="btn btn-light btn-sm"type="button">on special</button>':'';?></p>
                     </div>
                 </div>
             </div> 
